@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`welcome renders 1`] = `
+<DocumentFragment>
+  <div>
+    <h1>
+      Welcome page
+    </h1>
+  </div>
+</DocumentFragment>
+`;
