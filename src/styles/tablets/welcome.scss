@@ -1,0 +1,55 @@
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .welcome-container{
+    display: flex;
+    height: 100vh;
+    // width: 100%;
+    flex-direction: column;
+    background-color: yellow;
+    .slider{
+      // background-color: rgba($color: #FFB400, $alpha: 0.5);
+      img{
+        width: 100%;
+        height: 100vh;
+      }
+      h1{
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        top: 40%;
+        color:rgb(0, 111, 175) ;
+        font-size: 3.9em;
+      }
+    }
+  }
+  .navbar{
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    justify-content: space-between;
+    .menu{
+      margin: 40px;
+    }
+    .search{
+      margin: 40px;
+      
+    }
+    .account{
+      margin: 40px;
+      ul{
+        margin:0;
+        padding:0;
+        list-style: none;
+        li{
+          display: inline-block;
+          margin:0 5px;
+          a{
+            text-decoration: none;
+            color: #000000;
+          }
+        }
+      }
+    }
+  }
+}
