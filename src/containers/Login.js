@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import "../styles/tablets/register.scss";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { loginUser } from "../store/actions/auth";
 import PropTypes from "prop-types";
-const Login = ({ loginUser }) => {
+const Login = ({ loginUser, isLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  if(isLoggedIn) return <Redirect to="home"/>
   return (
     <div className="register-container">
       <form
@@ -43,10 +44,20 @@ const Login = ({ loginUser }) => {
   );
 };
 
+Login.defaultProps = {
+  isLoggedIn:false
+}
+
 Login.propTypes = {
   loginUser: PropTypes.func,
+  isLoggedIn: PropTypes.bool
 };
 
+const maptStateToProps = (state)=>{
+  return{
+    isLoggedIn: state.auth.isLoggedIn
+  }
+}
 const mapDipatchToProps = (dispatch) => {
   return {
     loginUser: (data) => {
@@ -55,4 +66,4 @@ const mapDipatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDipatchToProps)(Login);
+export default connect(maptStateToProps, mapDipatchToProps)(Login);

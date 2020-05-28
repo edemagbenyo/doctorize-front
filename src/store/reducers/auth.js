@@ -6,7 +6,7 @@ export default (state={user:{}, isLoading:false, isLoggedIn:false},action)=>{
     case ActionType.LOADING_REGISTER:
       return {...state, isLoading:true }
     case ActionType.LOGIN:
-      return {...state, user:action.user }
+      return {...state, user:action.user, isLoading:false, isLoggedIn:true}
     case ActionType.LOADING_LOGIN:
       return {...state, isLoading:true }
     default:
