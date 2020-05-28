@@ -1,3 +1,4 @@
+
 ul {
   list-style: none;
   margin: 0;
@@ -17,6 +18,8 @@ ul {
         ul {
           margin-left: 20px;
           li {
+            border-top-left-radius: 25px;
+            border-bottom-left-radius: 25px;
             a {
               display: block;
               padding: 10px;
@@ -36,7 +39,14 @@ ul {
 
       .logo {
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        img{
+          // width: 20%;
+        }
+        p{
+
+        }
       }
 
       .socials {
@@ -61,7 +71,8 @@ ul {
       }
     }
     .main-content {
-      // background-color: green;
+      
+      padding:20px;
       width: 80%;
     }
   }

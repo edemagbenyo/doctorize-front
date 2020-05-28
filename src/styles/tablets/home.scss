@@ -1,0 +1,17 @@
+@import '../variables';
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .menu{
+    li{
+      display: inline-block;
+      border-radius: 25px;
+      background-color: $red;
+      padding:10px;
+      margin:5px;
+      a{
+        color:$white;
+      }
+    }
+
+  }
+}

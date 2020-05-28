@@ -1,0 +1,37 @@
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .register-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      label {
+        text-align: center;
+        width: 100%;
+        
+        input {
+          width: 40%;
+          border-radius: 25px;
+          border: 1px solid #006faf;
+          padding: 10px;
+          padding-left:30px ;
+          font-size: 1.5em;
+          margin: 20px 0;
+          outline: none;
+        }
+      }
+      button {
+        background-color: rgb(191, 19, 99);
+        color: #fbfef9;
+        border: none;
+        border-radius: 25px;
+        font-size: 1.5em;
+        padding:10px 20px;
+      }
+    }
+  }
+}
