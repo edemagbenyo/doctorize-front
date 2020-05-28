@@ -21,6 +21,9 @@ const Home = ({isLoggedIn}) => {
           <div className="menu">
             <ul>
               <li>
+                <Link to={`${url}`}>Dasboard</Link>
+              </li>
+              <li>
                 <Link to={`${url}/appointments`}>Appointments</Link>
               </li>
               <li>

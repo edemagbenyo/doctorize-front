@@ -1,4 +1,4 @@
-import { LOADING_LOGIN, ERROR_LOGIN,LOGIN } from "../actionTypes";
+import { LOADING_LOGIN, ERROR_LOGIN,LOGIN, GET_USER, NO_TOKEN } from "../actionTypes";
 import { url } from "../../config";
 import axios from "axios";
 import Cookies from 'js-cookie';
@@ -26,3 +26,26 @@ export const loginUser = ({ username, password }) => (dispatch) => {
       });
     });
 };
+
+
+export const getUser = ()=>dispatch=>{
+  //Get the rocookie if any
+  const token = Cookies.get('auth_token');
+  console.log(token);
+  if(!token || token==''){
+    return {
+      type:NO_TOKEN,
+      user:{}
+    }
+  }else{
+    axios.get(`${url}/user`,{
+      headers: {'Authorization': token}
+    })
+    .then(data=>{
+      dispatch({
+        type:GET_USER,
+        user:data.user
+      })
+    })
+  }
+}

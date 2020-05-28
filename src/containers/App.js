@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Routes from "../router/index";
 import { useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import "../styles/tablets/main.scss";
-function App() {
+import { connect } from "react-redux";
+import { getUser } from "../store/actions/auth";
+function App({getUser}) {
   const { pathname } = useLocation();
+  useEffect(()=>{
+   getUser()
+  },[getUser]);
   return (
     <div className="main-container">
       <div
@@ -23,4 +28,13 @@ function App() {
   );
 }
 
-export default App;
+const mapDispatchTopProps = (dispatch) => {
+  return { getUser: () => dispatch(getUser()) };
+};
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
+
+export default connect(mapStateToProps,mapDispatchTopProps)(App);

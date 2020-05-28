@@ -5,3 +5,5 @@ export const LOADING_LOGIN = 'LOADING_LOGIN';
 export const ERROR_LOGIN = 'ERROR_LOGIN';
 export const LOADING_REGISTER = 'LOADING_REGISTER';
 export const ERROR_REGISTER = 'ERROR_REGISTER';
+export const NO_TOKEN = 'NO_TOKEN'
+export const GET_USER = 'GET_USER'
