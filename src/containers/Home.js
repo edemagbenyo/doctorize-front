@@ -46,7 +46,7 @@ const Home = ({isLoggedIn}) => {
 const mapStateToProps = (state)=>{
   console.log(state)
   return {
-    isLoggedIn: state.user.isLoggedIn
+    isLoggedIn: state.auth.isLoggedIn
   }
 }
 export default connect(mapStateToProps,null)(Home);

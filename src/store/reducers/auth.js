@@ -1,5 +1,5 @@
 import * as ActionType from '../actionTypes';
-export default (state={user:{}, isLoading:false},action)=>{
+export default (state={user:{}, isLoading:false, isLoggedIn:false},action)=>{
   switch (action.type) {
     case ActionType.REGISTER:
       return {...state, user:action.user }
