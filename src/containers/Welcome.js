@@ -14,8 +14,10 @@ const Welcome = () => {
         </div>
       </div>
       <div className="slider">
+        <div className="caption">
         <h1>Welcome to doctorize</h1>
         <Link to="/">Get Started</Link>
+        </div>
         <div className="slide"><img src={Doctor1} alt="Doctor"/></div>
       </div>
 
