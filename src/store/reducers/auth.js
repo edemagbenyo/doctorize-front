@@ -5,13 +5,13 @@ export default (
 ) => {
   switch (action.type) {
     case ActionType.REGISTER:
-      return { ...state, user: action.user };
+      return { ...state, user: action.user, isLoggedIn: true };
     case ActionType.LOADING_REGISTER:
       return { ...state, isLoading: true };
     case ActionType.LOGIN:
       return {
         ...state,
-        user: action.user,
+        user:action.user,
         isLoading: false,
         isLoggedIn: true,
       };
@@ -21,6 +21,8 @@ export default (
       return { ...state, user: action.user, isLoggedIn: true };
     case ActionType.NO_TOKEN:
       return { ...state };
+    case ActionType.LOGOUT:
+      return {...state, user:{}, isLoggedIn:false}
     default:
       return state;
   }
