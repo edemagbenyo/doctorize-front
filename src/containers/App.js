@@ -5,7 +5,8 @@ import Navbar from "../components/Navbar";
 import "../styles/tablets/main.scss";
 import { connect } from "react-redux";
 import { getUser } from "../store/actions/auth";
-function App({getUser}) {
+function App({getUser, user}) {
+  
   const { pathname } = useLocation();
   useEffect(()=>{
    getUser()
@@ -16,7 +17,7 @@ function App({getUser}) {
         className={pathname === "/" ? "" : "main-navbar"}
         style={pathname === "/" ? { display: "none" } : { display: "" }}
       >
-        <Navbar />
+        <Navbar user={user}/>
       </div>
       <div
         style={pathname === "/" ? { width: "100%" } : { width: "" }}
@@ -33,7 +34,7 @@ const mapDispatchTopProps = (dispatch) => {
 };
 const mapStateToProps = (state) => {
   return {
-    user: state.user,
+    user: state.auth.user,
   };
 };
 

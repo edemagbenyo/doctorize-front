@@ -12,14 +12,14 @@ export const loginUser = ({ username, password }) => (dispatch) => {
     .then((data) => {
       //Set the token in secure cookie.
       Cookies.set('auth_token', data.data.auth_token)
-      console.log(data.data);
+      Cookies.set('isLoggedIn', true);
+      Cookies.set('user', JSON.stringify(data.data.user));
       dispatch({
         type:LOGIN,
         user:data.data.user
       })
     })
     .catch((error) => {
-      console.log(error);
       dispatch({
         type: ERROR_LOGIN,
         error,
@@ -36,7 +36,9 @@ export const registerUser = ({ name, email, username, password }) => (dispatch) 
     .then((data) => {
       //Set the token in secure cookie.
       Cookies.set('auth_token', data.data.auth_token)
-      console.log(data);
+      Cookies.set('isLoggedIn', true);
+      Cookies.set('user', JSON.stringify(data.data.user));
+
       dispatch({
         type:REGISTER,
         user: data.data.user
@@ -54,29 +56,24 @@ export const logoutUser = ()=>{
   console.log("logging out........");
   //remove user from cookie
   Cookies.remove('auth_token');
+  Cookies.remove('user');
   return{
     type:LOGOUT
   }
 }
-export const getUser = ()=>dispatch=>{
+export const getUser = ()=>{
   //Get the rocookie if any
   const token = Cookies.get('auth_token');
-  console.log(token);
-  if(!token || token===''){
+  const user = Cookies.get('user');
+  if(!token || token==='' || !user){
     return {
       type:NO_TOKEN,
       user:{}
     }
   }else{
-    axios.get(`${url}/user`,{
-      headers: {'Authorization': token}
-    })
-    .then(data=>{
-      console.log(data.data);
-      dispatch({
-        type:GET_USER,
-        user:data.data
-      })
-    })
+    return {
+      type:GET_USER,
+      user:JSON.parse(Cookies.get('user'))
+    }
   }
 }

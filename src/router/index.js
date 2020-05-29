@@ -9,6 +9,8 @@ export default (
     <Route path="/login"><Login/></Route>
     <Route path="/register"><Register/></Route>
     <Route path="/home"><Home/></Route>
+    <Route path="/specialities"><Home/></Route>
+    <Route path="/doctors"><Home/></Route>
     <Route path="/"><Welcome/></Route>
   </Switch>
 );
