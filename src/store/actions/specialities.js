@@ -1,6 +1,6 @@
 import {  LOADING_SPECIALITIES, GET_SPECIALITIES } from "../actionTypes"
 import Axios from "axios";
-
+import {url} from '../../config';
 
 
 export const getSpecialities = ()=>dispatch=>{
@@ -12,7 +12,8 @@ export const getSpecialities = ()=>dispatch=>{
   .then(data=>{
     console.log("specialities",data);
     dispatch({
-      type:GET_SPECIALITIES
+      type:GET_SPECIALITIES,
+      specialities:data.data
     })
   })
 }

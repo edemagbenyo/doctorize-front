@@ -1,8 +1,8 @@
 import React from 'react';
-
+import '../styles/tablets/appointments.scss';
 
 const Appointments = ()=>{
-  return <div>
+  return <div className='container'>
     
   </div>
 }

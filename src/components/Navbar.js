@@ -10,17 +10,17 @@ const Navbar = ({ user }) => {
       <Logo />
       <div className="links">
         <ul>
-          <li className={pathname.includes('specialities') && 'active'}>
+          <li className={pathname.includes('specialities') ? 'active' :''}>
             <NavLink to="/specialities">Specialities</NavLink>
           </li>
-          <li className={pathname.includes('doctors') && 'active'}>
+          <li className={pathname.includes('doctors') ? 'active' :''}>
             <NavLink to="doctors">Our doctors</NavLink>
           </li>
-          {/* <li className={pathname.includes('doctors') && 'active'}>
+          {/* <li className={pathname.includes('doctors') ? 'active' :''}>
             <NavLink to="test">Self-Test(Covid)</NavLink>
           </li> */}
           {user && Object.keys(user).length > 0 && (
-            <li className={pathname.includes('home') && 'active'}>
+            <li className={pathname.includes('home') ? 'active' :''}>
               <NavLink to="/home" >Dashboard</NavLink>
             </li>
           )}
