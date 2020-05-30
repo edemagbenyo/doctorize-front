@@ -3,14 +3,16 @@ import Account from '../components/Account';
 import '../styles/tablets/welcome.scss'
 import Doctor1 from '../images/doctor1.png';
 import { Link } from 'react-router-dom';
-const Welcome = () => {
+import { connect } from 'react-redux';
+const Welcome = ({isLoggedIn}) => {
+  console.log(isLoggedIn);
   return (
     <div className="welcome-container">
       <div className="navbar">
         <div className="menu">Menu</div>
         <div className="search">Search</div>
         <div className="account">
-          <Account/>
+          <Account isLoggedIn={isLoggedIn}/>
         </div>
       </div>
       <div className="slider">
@@ -24,4 +26,11 @@ const Welcome = () => {
     </div>
   );
 };
-export default  Welcome;
+
+const mapStateToProps = (state)=>{
+  return {
+    isLoggedIn: state.auth.isLoggedIn
+  }
+}
+
+export default connect(mapStateToProps,null)(Welcome);

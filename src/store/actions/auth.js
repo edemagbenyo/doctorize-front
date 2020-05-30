@@ -1,4 +1,4 @@
-import { LOADING_LOGIN, ERROR_LOGIN,LOGIN, GET_USER, NO_TOKEN, LOGOUT, LOADING_REGISTER, REGISTER, ERROR_REGISTER } from "../actionTypes";
+import { LOADING_LOGIN, ERROR_LOGIN,LOGIN, GET_USER, NO_TOKEN, LOGOUT, LOADING_REGISTER, REGISTER, ERROR_REGISTER,GET_HEALTHINFO, LOADING_HEALTHINFO } from "../actionTypes";
 import { url } from "../../config";
 import axios from "axios";
 import Cookies from 'js-cookie';
@@ -77,3 +77,4 @@ export const getUser = ()=>{
     }
   }
 }
+

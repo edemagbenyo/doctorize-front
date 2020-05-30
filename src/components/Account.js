@@ -8,7 +8,7 @@ const Account = ({isLoggedIn})=>{
       <li><Link to="/login">Login</Link></li>
     </ul>
   </div>)
-  return (<div>My Account</div>)
+  return (<div><Link to="home"/>My Account</div>)
 }
 
 Account.defaultProps={

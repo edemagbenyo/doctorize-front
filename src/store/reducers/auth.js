@@ -1,6 +1,6 @@
 import * as ActionType from "../actionTypes";
 export default (
-  state = { user: {}, isLoading: false, isLoggedIn: false },
+  state = { user: {}, healthinfo: {}, isLoading: false, isLoggedIn: false },
   action
 ) => {
   switch (action.type) {
@@ -11,7 +11,7 @@ export default (
     case ActionType.LOGIN:
       return {
         ...state,
-        user:action.user,
+        user: action.user,
         isLoading: false,
         isLoggedIn: true,
       };
@@ -22,7 +22,7 @@ export default (
     case ActionType.NO_TOKEN:
       return { ...state };
     case ActionType.LOGOUT:
-      return {...state, user:{}, isLoggedIn:false}
+      return { ...state, user: {}, isLoggedIn: false };
     default:
       return state;
   }
