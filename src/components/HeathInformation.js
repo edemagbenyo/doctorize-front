@@ -1,62 +1,61 @@
 import React, { useState, useEffect } from "react";
 import "../styles/tablets/healthinfo.scss";
 import PropTypes from "prop-types";
-const HealthInformation = ({ updateInformation, information }) => {
+const HealthInformation = ({ updateInformation, information, flash }) => {
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [weight, setWeight] = useState("");
   const [height, setHeight] = useState("");
   const [personal, setPersonal] = useState("");
   const [family, setFamily] = useState("");
-  const setNewAge = (value) => {
-    setAge(value)
-  };
 
   useEffect(() => {
-    if (information) {
-      setAge(information.age);
-      setGender(information.gender);
-      setWeight(information.weight);
-      setHeight(information.height);
-      setPersonal(information.personal);
-      setFamily(information.family);
-    }
-  });
+    setAge(information && information.age);
+    setGender(information && information.gender);
+    setHeight(information && information.height);
+    setWeight(information && information.weight);
+    setFamily(information && information.family);
+    setPersonal(information && information.personal);
+  }, [information]);
+
   return (
     <div className="container">
       <h2 style={{ textAlign: "center" }}>Health information</h2>
-      <form>
+  {flash && (<span className="flash">{flash}</span>)}
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          updateInformation({
+            old: information,
+            age,
+            gender,
+            weight,
+            height,
+            personal,
+            family,
+          });
+        }}
+      >
         <div>
           <label>Age</label>
           <input
-            type="number"
+            type="text"
             value={age}
             placeholder="eg. 33"
-            onChange={(e) => setNewAge(e.target.value)}
+            onChange={(e) => setAge(e.target.value)}
           />
         </div>
         <div>
           <label>Gender</label>
-          <select onChange={(e) => setGender(e.target.value)}>
-            <option>Select gender</option>
-            <option
-              defaultValue={gender === "male" ? true : false}
-              value="male"
-            >
-              Male
-            </option>
-            <option
-              defaultValue={gender === "female" ? true : false}
-              value="female"
-            >
-              Female
-            </option>
-            <option
-              defaultValue={gender === "trans" ? true : false}
-              value="female"
-            >
-              Transgender
-            </option>
+          <select
+            value={gender}
+            defaultValue={information.gender}
+            onChange={(e) => setGender(e.target.value)}
+          >
+            <option value=''>Select gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="trans">Transgender</option>
           </select>
         </div>
         <div>
@@ -94,7 +93,7 @@ const HealthInformation = ({ updateInformation, information }) => {
 
         <div>
           <div></div>
-          <button>Update Information</button>
+          <button type="submit">Update Information</button>
         </div>
       </form>
     </div>
@@ -103,10 +102,6 @@ const HealthInformation = ({ updateInformation, information }) => {
 
 HealthInformation.propTypes = {
   updateInformation: PropTypes.func,
-  information: PropTypes.oneOfType({
-    age: PropTypes.string,
-    gender: PropTypes.string,
-  }),
 };
 
 HealthInformation.defaultProps = {
