@@ -53,7 +53,6 @@ export const registerUser = ({ name, email, username, password }) => (dispatch) 
 };
 
 export const logoutUser = ()=>{
-  console.log("logging out........");
   //remove user from cookie
   Cookies.remove('auth_token');
   Cookies.remove('user');

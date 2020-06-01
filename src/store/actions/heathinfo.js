@@ -12,7 +12,6 @@ export const getHealthInformation = () => (dispatch) => {
   dispatch({
     type: LOADING_HEALTHINFO,
   });
-  console.log(token);
   axios
     .get(`${url}/users/healthinfos`, {
       headers: { Authorization: token },
