@@ -16,13 +16,12 @@ const Specialities = ({specialities,getSpecialities,isLoading})=>{
     <h1>Specialities</h1>
     <span className="info">Select any speciality to get doctors</span>
     {(specialities && specialities.length>0) ? (<ul className="specialities">
-      {specialities.map(speciality=>(<Speciality speciality = {speciality} getDoctors={()=>console.log("whoolaa!!!")}/>))}
+      {specialities.map(speciality=>(<Speciality key={speciality.id} speciality = {speciality} getDoctors={()=>console.log("whoolaa!!!")}/>))}
     </ul>) : (<h5>No speciality</h5>)}
   </div>
 }
 
 const mapStateToProps = (state)=>{
-  console.log(state);
   return {
     specialities: state.specialities.specialities,
     isLoading: state.specialities.isLoading

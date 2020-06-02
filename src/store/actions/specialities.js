@@ -10,7 +10,6 @@ export const getSpecialities = ()=>dispatch=>{
 
   Axios.get(`${url}/specialities`)
   .then(data=>{
-    console.log("specialities",data);
     dispatch({
       type:GET_SPECIALITIES,
       specialities:data.data

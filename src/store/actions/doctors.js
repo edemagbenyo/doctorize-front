@@ -14,14 +14,16 @@ export const getDoctorsBySpeciality = (speciality_id) => (dispatch) => {
     type: LOADING_DOCTORS,
   });
 
+  console.log("Get by speciality", speciality_id);
   axios
-    .get(`${url}/specialities/${speciality_id}/doctors`, {
+    .get(`${url}/specialities/${speciality_id}`, {
       headers: { Authorization: token },
     })
     .then((data) => {
+      console.log(data.data);
       dispatch({
         type: GET_SPECIALITY_DOCTORS,
-        doctors: data.data,
+        speciality:data.data
       });
     });
 };

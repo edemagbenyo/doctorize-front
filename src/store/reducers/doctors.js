@@ -5,14 +5,14 @@ import {
 } from "../actionTypes";
 
 export default (
-  state = { doctors: {}, isLoading: false, flash: null },
+  state = { doctors: {}, isLoading: false, flash: null, speciality:null },
   action
 ) => {
   switch (action.type) {
     case GET_DOCTORS:
-      return { ...state, doctors: action.doctors, isLoading:false };
+      return { ...state, doctors: action.doctors, isLoading:false , speciality:null };
     case GET_SPECIALITY_DOCTORS:
-      return { ...state, doctors: action.doctors, isLoading: false };
+      return { ...state, doctors: action.speciality.doctors, isLoading: false, speciality:action.speciality };
     case LOADING_DOCTORS:
       return { ...state, isLoading: true };
     default:
