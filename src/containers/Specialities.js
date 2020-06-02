@@ -4,13 +4,14 @@ import { getSpecialities } from '../store/actions/specialities';
 import Loading from '../components/Loading';
 import '../styles/tablets/specialities.scss'
 import Speciality from '../components/Speciality';
+import {Redirect} from 'react-router-dom';
 
 
-const Specialities = ({specialities,getSpecialities,isLoading})=>{
+const Specialities = ({specialities,getSpecialities,isLoading,isLoggedIn})=>{
   useEffect(()=>{
     getSpecialities()
   },[getSpecialities])
-
+  if (!isLoggedIn) return <Redirect to="/login" />;
   if(isLoading) return <Loading/>
   return <div>
     <h1>Specialities</h1>
@@ -24,7 +25,8 @@ const Specialities = ({specialities,getSpecialities,isLoading})=>{
 const mapStateToProps = (state)=>{
   return {
     specialities: state.specialities.specialities,
-    isLoading: state.specialities.isLoading
+    isLoading: state.specialities.isLoading,
+    isLoggedIn: state.auth.isLoggedIn,
   }
 }
 

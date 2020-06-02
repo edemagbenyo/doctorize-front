@@ -11,9 +11,10 @@ export const loginUser = ({ username, password }) => (dispatch) => {
     .post(`${url}/auth/login`, { username, password })
     .then((data) => {
       //Set the token in secure cookie.
-      Cookies.set('auth_token', data.data.auth_token)
-      Cookies.set('isLoggedIn', true);
-      Cookies.set('user', JSON.stringify(data.data.user));
+      localStorage.setItem('auth_token', data.data.auth_token)
+      localStorage.setItem('isLoggedIn', true);
+      localStorage.setItem('user', JSON.stringify(data.data.user));
+
       dispatch({
         type:LOGIN,
         user:data.data.user
@@ -35,9 +36,9 @@ export const registerUser = ({ name, email, username, password }) => (dispatch) 
     .post(`${url}/signup`, { name, email, username, password })
     .then((data) => {
       //Set the token in secure cookie.
-      Cookies.set('auth_token', data.data.auth_token)
-      Cookies.set('isLoggedIn', true);
-      Cookies.set('user', JSON.stringify(data.data.user));
+      localStorage.setItem('auth_token', data.data.auth_token)
+      localStorage.setItem('isLoggedIn', true);
+      localStorage.setItem('user', JSON.stringify(data.data.user));
 
       dispatch({
         type:REGISTER,
@@ -52,18 +53,19 @@ export const registerUser = ({ name, email, username, password }) => (dispatch) 
     });
 };
 
-export const logoutUser = ()=>{
+export const logoutUser = (message='You have been logged out!')=>{
   //remove user from cookie
-  Cookies.remove('auth_token');
-  Cookies.remove('user');
+  
+  localStorage.removeItem('auth_token');
+  localStorage.removeItem('user');
   return{
-    type:LOGOUT
+    type:LOGOUT, message
   }
 }
 export const getUser = ()=>{
   //Get the rocookie if any
-  const token = Cookies.get('auth_token');
-  const user = Cookies.get('user');
+  const token = localStorage.getItem('auth_token');
+  const user = localStorage.getItem('user');
   if(!token || token==='' || !user){
     return {
       type:NO_TOKEN,
@@ -72,7 +74,7 @@ export const getUser = ()=>{
   }else{
     return {
       type:GET_USER,
-      user:JSON.parse(Cookies.get('user'))
+      user:JSON.parse(localStorage.getItem('user'))
     }
   }
 }

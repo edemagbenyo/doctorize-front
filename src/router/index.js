@@ -17,3 +17,4 @@ export default (
     <Route path="/"><Welcome/></Route>
   </Switch>
 );
+

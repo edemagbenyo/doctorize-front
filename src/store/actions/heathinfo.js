@@ -6,8 +6,9 @@ import {
 import { url } from "../../config";
 import Cookies from "js-cookie";
 import axios from "axios";
+import { logoutUser } from "./auth";
 
-const token = Cookies.get("auth_token");
+const token = localStorage.getItem("auth_token");
 export const getHealthInformation = () => (dispatch) => {
   dispatch({
     type: LOADING_HEALTHINFO,
@@ -22,12 +23,17 @@ export const getHealthInformation = () => (dispatch) => {
         type: GET_HEALTHINFO,
         healthinfo: data.data[0],
       });
+    })
+    .catch((err) => {
+      if (err.response.status == 422) {
+        logoutUser(err.response.data.message);
+      }
     });
 };
 
 export const updateInformation = (data) => (dispatch) => {
   console.log(`Information to update`, data);
-  const user = JSON.parse(Cookies.get("user"));
+  const user = JSON.parse(localStorage.getItem("user"));
   console.log(token);
   if (!data.old) {
     //post
@@ -47,7 +53,7 @@ export const updateInformation = (data) => (dispatch) => {
       .then((data) => {
         dispatch({
           type: UPDATE_HEALTHINFO,
-          flash: 'Health information has been saved!'
+          flash: "Health information has been saved!",
         });
       });
   } else {
@@ -68,8 +74,13 @@ export const updateInformation = (data) => (dispatch) => {
       .then((data) => {
         dispatch({
           type: UPDATE_HEALTHINFO,
-          flash: 'Health information has been updated!'
+          flash: "Health information has been updated!",
         });
+      })
+      .catch((err) => {
+        if (err.response.status == 422) {
+          logoutUser(err.response.data.message);
+        }
       });
   }
 };

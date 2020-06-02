@@ -2,16 +2,16 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import {
   getDoctors,
-  bookAppointment,
   getDoctorsBySpeciality,
 } from "../store/actions/doctors";
 import "../styles/tablets/doctors.scss";
 import Doctor from "../components/Doctor";
-import { useParams } from "react-router-dom";
+import { useParams, Redirect } from "react-router-dom";
 import Loading from "../components/Loading";
 
-const Doctors = ({ doctors, getDoctors, isLoading,getDoctorsBySpeciality,speciality }) => {
+const Doctors = ({ doctors, getDoctors, isLoading,getDoctorsBySpeciality,speciality,isLoggedIn }) => {
   const { id } = useParams();
+
   useEffect(() => {
     if (id) {
       getDoctorsBySpeciality(id);
@@ -19,6 +19,7 @@ const Doctors = ({ doctors, getDoctors, isLoading,getDoctorsBySpeciality,special
       getDoctors();
     }
   },[getDoctors,id]);
+  if (!isLoggedIn) return <Redirect to="/login" />;
   if (isLoading) return <Loading />;
   return (
     <div>
@@ -31,7 +32,7 @@ const Doctors = ({ doctors, getDoctors, isLoading,getDoctorsBySpeciality,special
             <Doctor
               key={doctor.id}
               doctor={doctor}
-              bookAppointment={() => console.log("whoolaa!!!")}
+              
             />
           ))}
         </ul>
@@ -46,14 +47,14 @@ const mapStateToProps = (state) => {
   return {
     doctors: state.doctors.doctors,
     isLoading: state.doctors.isLoading,
-    speciality:state.doctors.speciality
+    speciality:state.doctors.speciality,
+    isLoggedIn: state.auth.isLoggedIn,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     getDoctors: () => dispatch(getDoctors()),
-    bookAppointment: (doctor_id) => dispatch(bookAppointment(doctor_id)),
     getDoctorsBySpeciality: (speciality_id) =>
        dispatch(getDoctorsBySpeciality(speciality_id))
   };

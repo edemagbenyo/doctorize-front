@@ -19,7 +19,7 @@ const HealthInformation = ({ updateInformation, information, flash }) => {
   }, [information]);
 
   return (
-    <div className="container">
+    <div className="health-container">
       <h2 style={{ textAlign: "center" }}>Health information</h2>
   {flash && (<span className="flash">{flash}</span>)}
       <form

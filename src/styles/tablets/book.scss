@@ -1,19 +1,13 @@
 @import '../variables';
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
-  .health-container{
+  .book-container{
     form{
-      button{
-        border:none;
-        background-color: $blue;
-        color:$white;
-        padding:5px;
-        font-size: 1em;
-      }
+      
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      div{
+      &>div{
         width: 70%;
         display: flex;
         margin:10px 0;
@@ -21,24 +15,33 @@
           width: 40%;
           text-align: right;
         }
-        input{
+        &>input, &>div{
           margin:0 10px;
           width: 100%;
           font-size: 1.2em;
           padding:10px;
         }
         
-        textarea{
+        &>textarea{
           margin:0 10px;
           width: 100%;
-          font-size: 1.2em;
+          font-size: 1.8em;
           padding:10px;
+          border-radius: 0;
+          
         }
-        select{
+        &>select{
           margin:0 10px;
           width: 100%;
         }
         
+      }
+      button[type=submit]{
+        border:none;
+        background-color: $blue;
+        color:$white;
+        padding:15px;
+        font-size: 1em;
       }
     }
   }

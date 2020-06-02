@@ -5,13 +5,25 @@ import Appointments from "./Appointments";
 import { connect } from "react-redux";
 import { logoutUser } from "../store/actions/auth";
 import HealthInformation from "../components/HeathInformation";
-import { getHealthInformation, updateInformation } from "../store/actions/heathinfo";
+import {
+  getHealthInformation,
+  updateInformation,
+} from "../store/actions/heathinfo";
+import BookAppointment from "./BookAppointment";
 
-const Home = ({ isLoggedIn, user, logoutUser, getHealthInformation,healthinfo, updateInformation, flash }) => {
+const Home = ({
+  isLoggedIn,
+  user,
+  logoutUser,
+  getHealthInformation,
+  healthinfo,
+  updateInformation,
+  flash,
+}) => {
   const { url, path } = useRouteMatch();
-  useEffect(()=>{
-    getHealthInformation()
-  },[getHealthInformation]);
+  useEffect(() => {
+    getHealthInformation();
+  }, [getHealthInformation]);
   if (isLoggedIn)
     return (
       <div>
@@ -34,7 +46,7 @@ const Home = ({ isLoggedIn, user, logoutUser, getHealthInformation,healthinfo, u
                     href="/"
                     onClick={(e) => {
                       e.preventDefault();
-                      logoutUser()
+                      logoutUser();
                     }}
                   >
                     Logout
@@ -50,9 +62,17 @@ const Home = ({ isLoggedIn, user, logoutUser, getHealthInformation,healthinfo, u
             <Route path={`${path}/appointments`}>
               <Appointments />
             </Route>
-            <Route path={`${path}`}>
-                <HealthInformation information={healthinfo} updateInformation={updateInformation} flash={flash}/>
+            <Route path={`${path}/book/:doctorid`}>
+              <BookAppointment />
             </Route>
+            <Route path={`${path}`}>
+              <HealthInformation
+                information={healthinfo}
+                updateInformation={updateInformation}
+                flash={flash}
+              />
+            </Route>
+           
           </Switch>
         </>
       </div>
@@ -62,9 +82,9 @@ const Home = ({ isLoggedIn, user, logoutUser, getHealthInformation,healthinfo, u
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    logoutUser:()=> dispatch(logoutUser()),
-    getHealthInformation: ()=>dispatch(getHealthInformation()),
-    updateInformation: (data)=>dispatch(updateInformation(data))
+    logoutUser: () => dispatch(logoutUser()),
+    getHealthInformation: () => dispatch(getHealthInformation()),
+    updateInformation: (data) => dispatch(updateInformation(data)),
   };
 };
 
@@ -74,7 +94,7 @@ const mapStateToProps = (state) => {
     isLoggedIn: state.auth.isLoggedIn,
     user: state.auth.user,
     healthinfo: state.healthinfo.healthinfo,
-    flash:state.healthinfo.flash
+    flash: state.healthinfo.flash,
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

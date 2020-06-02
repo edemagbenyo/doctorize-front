@@ -6,15 +6,14 @@ import {
 import axios from "axios";
 import { url } from "../../config";
 import Cookies from "js-cookie";
+import { logoutUser } from "./auth";
 
-const token = Cookies.get("auth_token");
-
+const token = localStorage.getItem("auth_token");
 export const getDoctorsBySpeciality = (speciality_id) => (dispatch) => {
   dispatch({
     type: LOADING_DOCTORS,
   });
 
-  console.log("Get by speciality", speciality_id);
   axios
     .get(`${url}/specialities/${speciality_id}`, {
       headers: { Authorization: token },
@@ -23,8 +22,13 @@ export const getDoctorsBySpeciality = (speciality_id) => (dispatch) => {
       console.log(data.data);
       dispatch({
         type: GET_SPECIALITY_DOCTORS,
-        speciality:data.data
+        speciality: data.data,
       });
+    })
+    .catch((err) => {
+      if (err.response.status == 422) {
+        logoutUser(err.response.data.message);
+      }
     });
 };
 export const getDoctors = () => (dispatch) => {
@@ -42,8 +46,10 @@ export const getDoctors = () => (dispatch) => {
         type: GET_DOCTORS,
         doctors: data.data,
       });
+    })
+    .catch((err) => {
+      if (err.response.status == 422) {
+        logoutUser(err.response.data.message);
+      }
     });
-};
-export const bookAppointment = (doctor_id) => (dispatch) => {
-  //TODO : Book appointnemtn
 };
