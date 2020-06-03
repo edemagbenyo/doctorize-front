@@ -4,12 +4,11 @@ import {
   UPDATE_HEALTHINFO,
 } from "../actionTypes";
 import { url } from "../../config";
-import Cookies from "js-cookie";
 import axios from "axios";
 import { logoutUser } from "./auth";
 
-const token = localStorage.getItem("auth_token");
 export const getHealthInformation = () => (dispatch) => {
+  const token = localStorage.getItem("auth_token");
   dispatch({
     type: LOADING_HEALTHINFO,
   });
@@ -18,23 +17,20 @@ export const getHealthInformation = () => (dispatch) => {
       headers: { Authorization: token },
     })
     .then((data) => {
-      console.log(data);
       dispatch({
         type: GET_HEALTHINFO,
         healthinfo: data.data[0],
       });
     })
     .catch((err) => {
-      if (err.response.status == 422) {
+      if (err.response.status === 422) {
         logoutUser(err.response.data.message);
       }
     });
 };
 
 export const updateInformation = (data) => (dispatch) => {
-  console.log(`Information to update`, data);
-  const user = JSON.parse(localStorage.getItem("user"));
-  console.log(token);
+  const token = localStorage.getItem("auth_token");
   if (!data.old) {
     //post
     axios
@@ -78,7 +74,8 @@ export const updateInformation = (data) => (dispatch) => {
         });
       })
       .catch((err) => {
-        if (err.response.status == 422) {
+        console.log(err.response);
+        if (err.response.status === 422) {
           logoutUser(err.response.data.message);
         }
       });

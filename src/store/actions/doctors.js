@@ -5,7 +5,6 @@ import {
 } from "../actionTypes";
 import axios from "axios";
 import { url } from "../../config";
-import Cookies from "js-cookie";
 import { logoutUser } from "./auth";
 
 const token = localStorage.getItem("auth_token");
@@ -26,7 +25,7 @@ export const getDoctorsBySpeciality = (speciality_id) => (dispatch) => {
       });
     })
     .catch((err) => {
-      if (err.response.status == 422) {
+      if (err.response.status === 422) {
         logoutUser(err.response.data.message);
       }
     });
@@ -48,7 +47,7 @@ export const getDoctors = () => (dispatch) => {
       });
     })
     .catch((err) => {
-      if (err.response.status == 422) {
+      if (err.response.status === 422) {
         logoutUser(err.response.data.message);
       }
     });

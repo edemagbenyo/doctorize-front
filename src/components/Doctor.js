@@ -1,6 +1,6 @@
 import React from "react";
-import { Link, useRouteMatch, useLocation } from "react-router-dom";
-const Doctor = ({ doctor, bookAppointment }) => {
+import { Link } from "react-router-dom";
+const Doctor = ({ doctor }) => {
 
   return (
     <li key={doctor.id}>

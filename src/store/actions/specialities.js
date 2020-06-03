@@ -16,7 +16,7 @@ export const getSpecialities = () => (dispatch) => {
       });
     })
     .catch((err) => {
-      if (err.response.status == 422) {
+      if (err.response.status === 422) {
         logoutUser(err.response.data.message);
       }
     });

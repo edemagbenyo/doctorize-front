@@ -4,7 +4,6 @@ import { getSpecialities } from '../store/actions/specialities';
 import Loading from '../components/Loading';
 import '../styles/tablets/specialities.scss'
 import Speciality from '../components/Speciality';
-import {Redirect} from 'react-router-dom';
 
 
 const Specialities = ({specialities,getSpecialities,isLoading,isLoggedIn})=>{

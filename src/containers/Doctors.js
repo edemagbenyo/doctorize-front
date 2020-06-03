@@ -6,7 +6,7 @@ import {
 } from "../store/actions/doctors";
 import "../styles/tablets/doctors.scss";
 import Doctor from "../components/Doctor";
-import { useParams, Redirect } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Loading from "../components/Loading";
 
 const Doctors = ({ doctors, getDoctors, isLoading,getDoctorsBySpeciality,speciality,isLoggedIn }) => {
@@ -18,7 +18,7 @@ const Doctors = ({ doctors, getDoctors, isLoading,getDoctorsBySpeciality,special
     } else {
       getDoctors();
     }
-  },[getDoctors,id]);
+  },[getDoctors,id,getDoctorsBySpeciality]);
   // if (!isLoggedIn) return <Redirect to="/login" />;
   if (isLoading) return <Loading />;
   return (

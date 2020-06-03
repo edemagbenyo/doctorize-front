@@ -24,6 +24,7 @@ export const bookAppointment = (data) => (dispatch) => {
     );
 };
 export const getAppointments = () => (dispatch) => {
+  console.log(token);
   axios
     .get(
       `${url}/appointments`,

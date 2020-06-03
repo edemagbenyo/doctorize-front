@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import '../styles/tablets/register.scss'
 import {Link, Redirect} from 'react-router-dom';
-import { registerUser } from "../store/actions/auth";
+import { registerDoctor } from "../store/actions/auth";
 
-const Register = ({isLoggedIn, registerUser}) => {
+const RegisterDoctor = ({isLoggedIn, registerDoctor}) => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [username, setUsername] = useState('')
@@ -16,7 +16,7 @@ const Register = ({isLoggedIn, registerUser}) => {
     <div className="register-container">
       <form onSubmit={(e) => {
           e.preventDefault();
-          registerUser({ name, email, username, password });
+          registerDoctor({ name, email, username, password });
         }}>
         <h1>Create an account</h1>
         <label htmlFor="name">
@@ -46,10 +46,10 @@ const maptStateToProps = (state)=>{
 }
 const mapDipatchToProps = (dispatch) => {
   return {
-    registerUser: (data) => {
-      dispatch(registerUser(data));
+    registerDoctor: (data) => {
+      dispatch(registerDoctor(data));
     },
   };
 };
 
-export default connect(maptStateToProps, mapDipatchToProps)(Register);
+export default connect(maptStateToProps, mapDipatchToProps)(RegisterDoctor);
