@@ -19,7 +19,7 @@ const Doctors = ({ doctors, getDoctors, isLoading,getDoctorsBySpeciality,special
       getDoctors();
     }
   },[getDoctors,id]);
-  if (!isLoggedIn) return <Redirect to="/login" />;
+  // if (!isLoggedIn) return <Redirect to="/login" />;
   if (isLoading) return <Loading />;
   return (
     <div>

@@ -11,7 +11,6 @@ const Specialities = ({specialities,getSpecialities,isLoading,isLoggedIn})=>{
   useEffect(()=>{
     getSpecialities()
   },[getSpecialities])
-  if (!isLoggedIn) return <Redirect to="/login" />;
   if(isLoading) return <Loading/>
   return <div>
     <h1>Specialities</h1>

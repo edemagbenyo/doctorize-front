@@ -3,24 +3,28 @@ import DateTimePicker from "react-datetime-picker";
 import "react-calendar/dist/Calendar.css";
 import "../styles/tablets/book.scss";
 import {connect} from 'react-redux';
+import {useParams, useLocation} from 'react-router-dom';
 import { bookAppointment } from "../store/actions/appointments";
 import PropTypes from 'prop-types';
 
-const BookAppointment = ({bookAppointment}) => {
+const BookAppointment = ({bookAppointment,userid}) => {
   const [info, setInfo] = useState("");
-  const [link, setLink] = useState("");
+  const [link] = useState("https://microverse.zoom.us/j/3749659607");
   const [guest, setGuest] = useState("");
   const [date, setDate] = useState(new Date());
+  const {doctorid} = useParams()
+  const {state} = useLocation();
   return (
     <div className="book-container">
-      <h3>Book an appointment with Dr. .....</h3>
+      <h3>Book an appointment with Dr. {state.name}</h3>
       <form onSubmit={(e)=>{
         e.preventDefault();
         bookAppointment({
           info,
-          link,
+          meeting_link:link,
           guest,
-          date
+          date,
+          doctor_id:doctorid,user_id:userid
         })
       }}>
         <div>
@@ -32,7 +36,7 @@ const BookAppointment = ({bookAppointment}) => {
         </div>
         <div>
           <label>Meeting link</label>
-          <input value={link} onChange={(e) => setLink(e.target.value)} />
+          <input value={link} readOnly={true} />
         </div>
         <div>
           <label>Guest</label>
@@ -55,7 +59,8 @@ BookAppointment.defaultProps={
   bookAppointment:()=>undefined
 }
 BookAppointment.propTypes={
-  bookAppointment:PropTypes.func
+  bookAppointment:PropTypes.func,
+  userid:PropTypes.number
 }
 
 const mapDispatchToProps = dispatch =>{
@@ -63,5 +68,10 @@ const mapDispatchToProps = dispatch =>{
     bookAppointment:(data)=>dispatch(bookAppointment(data))
   }
 }
+const mapStateToProps = state=>{
+  return {
+    userid:state.auth.user.id
+  }
+}
 
-export default connect(null,mapDispatchToProps)(BookAppointment);
+export default connect(mapStateToProps,mapDispatchToProps)(BookAppointment);

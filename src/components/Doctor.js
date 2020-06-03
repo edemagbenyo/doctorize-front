@@ -4,7 +4,7 @@ const Doctor = ({ doctor, bookAppointment }) => {
 
   return (
     <li key={doctor.id}>
-      <Link to={`/home/book/${doctor.id}`}>
+      <Link to={{pathname:`/home/book/${doctor.id}`,state:doctor}}>
         <h2>{doctor.name}</h2>
         {doctor.speciality && <p>Speciality: {doctor.speciality.name}</p>}
         <p>Years of experience: {doctor.experience_year}</p>
