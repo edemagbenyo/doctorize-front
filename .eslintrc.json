@@ -1,7 +1,8 @@
 {
     "env": {
         "browser": true,
-        "es6": true
+        "es6": true,
+        "jest":true
     },
     "extends": [
         "plugin:react/recommended",
@@ -22,5 +23,18 @@
         "react"
     ],
     "rules": {
+        "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
+        "import/no-unresolved": "off",
+        "no-shadow": "off",
+        "arrow-parens": ["error", "as-needed"],
+        "import/no-extraneous-dependencies":"off",
+        "no-use-before-define": "off",
+        "no-param-reassign": "off",
+        "no-lonely-if": "off",
+        "no-unused-vars": "off",
+        "import/prefer-default-export":"off",
+        "no-nested-ternary":"off",
+        "jsx-a11y/label-has-associated-control":"off",
+        "camelcase":"off"
     }
 }

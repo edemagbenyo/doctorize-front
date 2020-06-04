@@ -1,17 +1,18 @@
-import React, { useState } from "react";
-import { connect } from "react-redux";
-import "../styles/tablets/register.scss";
-import { Link, Redirect } from "react-router-dom";
-import { loginUser } from "../store/actions/auth";
-import PropTypes from "prop-types";
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import '../styles/tablets/register.scss';
+import { Link, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { loginUser } from '../store/actions/auth';
+
 const Login = ({ loginUser, isLoggedIn }) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  if(isLoggedIn) return <Redirect to="home"/>
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  if (isLoggedIn) return <Redirect to="home" />;
   return (
     <div className="register-container">
       <form
-        onSubmit={(e) => {
+        onSubmit={e => {
           e.preventDefault();
           loginUser({ username, password });
         }}
@@ -22,7 +23,7 @@ const Login = ({ loginUser, isLoggedIn }) => {
             id="username"
             type="text"
             placeholder="Username"
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={e => setUsername(e.target.value)}
             value={username}
           />
         </label>
@@ -31,13 +32,14 @@ const Login = ({ loginUser, isLoggedIn }) => {
             id="password"
             type="password"
             placeholder="password"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={e => setPassword(e.target.value)}
             value={password}
           />
         </label>
-        <button>Login</button>
+        <button type="submit">Login</button>
         <p>
-          Don't have an account? <Link to="register">Register</Link>
+          Don &apos; t have an account?
+          <Link to="register">Register</Link>
         </p>
       </form>
     </div>
@@ -45,25 +47,22 @@ const Login = ({ loginUser, isLoggedIn }) => {
 };
 
 Login.defaultProps = {
-  isLoggedIn:false
-}
+  loginUser: () => undefined,
+  isLoggedIn: false,
+};
 
 Login.propTypes = {
   loginUser: PropTypes.func,
-  isLoggedIn: PropTypes.bool
+  isLoggedIn: PropTypes.bool,
 };
 
-const maptStateToProps = (state)=>{
-  return{
-    isLoggedIn: state.auth.isLoggedIn
-  }
-}
-const mapDipatchToProps = (dispatch) => {
-  return {
-    loginUser: (data) => {
-      dispatch(loginUser(data));
-    },
-  };
-};
+const maptStateToProps = state => ({
+  isLoggedIn: state.auth.isLoggedIn,
+});
+const mapDipatchToProps = dispatch => ({
+  loginUser: data => {
+    dispatch(loginUser(data));
+  },
+});
 
 export default connect(maptStateToProps, mapDipatchToProps)(Login);

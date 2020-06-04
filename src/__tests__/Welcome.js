@@ -6,16 +6,15 @@ import Welcome from '../containers/Welcome';
 
 afterEach(cleanup);
 
-describe("welcome",()=>{
+describe('welcome', () => {
   it('renders', () => {
     const { asFragment } = render(<Welcome />);
     expect(asFragment()).toMatchSnapshot();
   });
-  
-  it('contains a text',()=>{
-    const {debug} = render(<Welcome />);
-    const text = screen.getByText('Welcome page')
-    expect(text).toBeTruthy()
+
+  it('contains a text', () => {
+    const { debug } = render(<Welcome />);
+    const text = screen.getByText('Welcome page');
+    expect(text).toBeTruthy();
   });
-  
-})
+});

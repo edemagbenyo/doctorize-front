@@ -1,14 +1,15 @@
+import axios from 'axios';
+import Cookies from 'js-cookie';
 import {
   LOADING_HEALTHINFO,
   GET_HEALTHINFO,
   UPDATE_HEALTHINFO,
-} from "../actionTypes";
-import { url } from "../../config";
-import axios from "axios";
-import { logoutUser } from "./auth";
-import Cookies from "js-cookie";
-export const getHealthInformation = () => (dispatch) => {
-  const token = Cookies.get("auth_token");
+} from '../actionTypes';
+import { url } from '../../config';
+import { logoutUser } from './auth';
+
+export const getHealthInformation = () => dispatch => {
+  const token = Cookies.get('auth_token');
   dispatch({
     type: LOADING_HEALTHINFO,
   });
@@ -16,24 +17,23 @@ export const getHealthInformation = () => (dispatch) => {
     .get(`${url}/users/healthinfos`, {
       headers: { Authorization: token },
     })
-    .then((data) => {
+    .then(data => {
       dispatch({
         type: GET_HEALTHINFO,
         healthinfo: data.data[0],
       });
     })
-    .catch((err) => {
-      console.log(err);
+    .catch(err => {
       if (err.response.status === 422) {
         logoutUser(err.response.data.message);
       }
     });
 };
 
-export const updateInformation = (data) => (dispatch) => {
-  const token = Cookies.get("auth_token");
+export const updateInformation = data => dispatch => {
+  const token = Cookies.get('auth_token');
   if (!data.old) {
-    //post
+    // post
     axios
       .post(
         `${url}/users/healthinfos/`,
@@ -45,16 +45,16 @@ export const updateInformation = (data) => (dispatch) => {
           personal: data.personal,
           family: data.family,
         },
-        { headers: { Authorization: token } }
+        { headers: { Authorization: token } },
       )
-      .then((data) => {
+      .then(data => {
         dispatch({
           type: UPDATE_HEALTHINFO,
-          flash: "Health information has been saved!",
+          flash: 'Health information has been saved!',
         });
       });
   } else {
-    //update
+    // update
     axios
       .put(
         `${url}/users/healthinfos/${data.old.id}`,
@@ -66,16 +66,15 @@ export const updateInformation = (data) => (dispatch) => {
           personal: data.personal,
           family: data.family,
         },
-        { headers: { Authorization: token } }
+        { headers: { Authorization: token } },
       )
-      .then((data) => {
+      .then(data => {
         dispatch({
           type: UPDATE_HEALTHINFO,
-          flash: "Health information has been updated!",
+          flash: 'Health information has been updated!',
         });
       })
-      .catch((err) => {
-        console.log(err.response);
+      .catch(err => {
         if (err.response.status === 422) {
           logoutUser(err.response.data.message);
         }

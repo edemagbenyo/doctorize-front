@@ -1,15 +1,18 @@
-import React, { useEffect } from "react";
-import { Switch, Route, Link, useRouteMatch, Redirect } from "react-router-dom";
-import "../styles/tablets/home.scss";
-import Appointments from "./Appointments";
-import { connect } from "react-redux";
-import { logoutUser } from "../store/actions/auth";
-import HealthInformation from "../components/HeathInformation";
+import React, { useEffect } from 'react';
+import {
+  Switch, Route, Link, useRouteMatch, Redirect,
+} from 'react-router-dom';
+import '../styles/tablets/home.scss';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import Appointments from './Appointments';
+import { logoutUser } from '../store/actions/auth';
+import HealthInformation from '../components/HeathInformation';
 import {
   getHealthInformation,
   updateInformation,
-} from "../store/actions/heathinfo";
-import BookAppointment from "./BookAppointment";
+} from '../store/actions/heathinfo';
+import BookAppointment from './BookAppointment';
 
 const Home = ({
   isLoggedIn,
@@ -19,20 +22,22 @@ const Home = ({
   healthinfo,
   updateInformation,
   flash,
-  user_type
+  userType,
 }) => {
-  console.log(user_type);
   const { url, path } = useRouteMatch();
   useEffect(() => {
     getHealthInformation();
   }, [getHealthInformation]);
-  if (isLoggedIn)
+  if (isLoggedIn) {
     return (
       <div>
         <>
           <div>
-          <div className="welcome">
-              <h1>Welcome back, {user.name}</h1>
+            <div className="welcome">
+              <h1>
+                Welcome back,
+                {user.name}
+              </h1>
             </div>
             <div className="menu">
               <ul>
@@ -45,7 +50,7 @@ const Home = ({
                 <li>
                   <a
                     href="/"
-                    onClick={(e) => {
+                    onClick={e => {
                       e.preventDefault();
                       logoutUser();
                     }}
@@ -55,7 +60,6 @@ const Home = ({
                 </li>
               </ul>
             </div>
-           
           </div>
           <Switch>
             <Route path={`${path}/appointments`}>
@@ -71,29 +75,50 @@ const Home = ({
                 flash={flash}
               />
             </Route>
-           
           </Switch>
         </>
       </div>
     );
+  }
   return <Redirect to="/login" />;
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    logoutUser: () => dispatch(logoutUser()),
-    getHealthInformation: () => dispatch(getHealthInformation()),
-    updateInformation: (data) => dispatch(updateInformation(data)),
-  };
+Home.defaultProps = {
+  isLoggedIn: false,
+  user: {},
+  logoutUser: () => undefined,
+  getHealthInformation: () => undefined,
+  healthinfo: {},
+  updateInformation: () => undefined,
+  flash: '',
+  userType: 'patient',
+};
+Home.propTypes = {
+  isLoggedIn: PropTypes.bool,
+  user: PropTypes.shape({
+    name: PropTypes.string,
+  }),
+  logoutUser: PropTypes.func,
+  getHealthInformation: PropTypes.func,
+  healthinfo: PropTypes.shape({
+    name: PropTypes.string,
+  }),
+  updateInformation: PropTypes.func,
+  flash: PropTypes.string,
+  userType: PropTypes.string,
 };
 
-const mapStateToProps = (state) => {
-  return {
-    isLoggedIn: state.auth.isLoggedIn,
-    user: state.auth.user,
-    healthinfo: state.healthinfo.healthinfo,
-    flash: state.healthinfo.flash,
-    user_type: state.auth.user_type
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  logoutUser: () => dispatch(logoutUser()),
+  getHealthInformation: () => dispatch(getHealthInformation()),
+  updateInformation: data => dispatch(updateInformation(data)),
+});
+
+const mapStateToProps = state => ({
+  isLoggedIn: state.auth.isLoggedIn,
+  user: state.auth.user,
+  healthinfo: state.healthinfo.healthinfo,
+  flash: state.healthinfo.flash,
+  userType: state.auth.userType,
+});
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

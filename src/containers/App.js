@@ -1,26 +1,27 @@
-import React, { useEffect } from "react";
-import Routes from "../router/index";
-import { useLocation } from "react-router-dom";
-import Navbar from "../components/Navbar";
-import "../styles/tablets/main.scss";
-import { connect } from "react-redux";
-import { getUser } from "../store/actions/auth";
-function App({getUser, user}) {
-  
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import Routes from '../router/index';
+import Navbar from '../components/Navbar';
+import '../styles/tablets/main.scss';
+import { getUser } from '../store/actions/auth';
+
+function App({ getUser, user }) {
   const { pathname } = useLocation();
-  useEffect(()=>{
-   getUser()
-  },[getUser]);
+  useEffect(() => {
+    getUser();
+  }, [getUser]);
   return (
     <div className="main-container">
       <div
-        className={pathname === "/" ? "" : "main-navbar"}
-        style={pathname === "/" ? { display: "none" } : { display: "" }}
+        className={pathname === '/' ? '' : 'main-navbar'}
+        style={pathname === '/' ? { display: 'none' } : { display: '' }}
       >
-        <Navbar user={user}/>
+        <Navbar user={user} />
       </div>
       <div
-        style={pathname === "/" ? { width: "100%" } : { width: "" }}
+        style={pathname === '/' ? { width: '100%' } : { width: '' }}
         className="main-content"
       >
         {Routes}
@@ -29,13 +30,20 @@ function App({getUser, user}) {
   );
 }
 
-const mapDispatchTopProps = (dispatch) => {
-  return { getUser: () => dispatch(getUser()) };
+App.defaultProps = {
+  getUser: () => undefined,
+  user: {},
 };
-const mapStateToProps = (state) => {
-  return {
-    user: state.auth.user,
-  };
+App.propTypes = {
+  getUser: PropTypes.func,
+  user: PropTypes.shape({
+    name: PropTypes.string,
+  }),
 };
 
-export default connect(mapStateToProps,mapDispatchTopProps)(App);
+const mapDispatchTopProps = dispatch => ({ getUser: () => dispatch(getUser()) });
+const mapStateToProps = state => ({
+  user: state.auth.user,
+});
+
+export default connect(mapStateToProps, mapDispatchTopProps)(App);

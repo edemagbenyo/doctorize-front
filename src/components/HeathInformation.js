@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
-import "../styles/tablets/healthinfo.scss";
-import PropTypes from "prop-types";
+import React, { useState, useEffect } from 'react';
+import '../styles/tablets/healthinfo.scss';
+import PropTypes from 'prop-types';
+
 const HealthInformation = ({ updateInformation, information, flash }) => {
-  const [age, setAge] = useState("");
-  const [gender, setGender] = useState("");
-  const [weight, setWeight] = useState("");
-  const [height, setHeight] = useState("");
-  const [personal, setPersonal] = useState("");
-  const [family, setFamily] = useState("");
+  const [age, setAge] = useState('');
+  const [gender, setGender] = useState('');
+  const [weight, setWeight] = useState('');
+  const [height, setHeight] = useState('');
+  const [personal, setPersonal] = useState('');
+  const [family, setFamily] = useState('');
 
   useEffect(() => {
     setAge(information && information.age);
@@ -20,10 +21,10 @@ const HealthInformation = ({ updateInformation, information, flash }) => {
 
   return (
     <div className="health-container">
-      <h2 style={{ textAlign: "center" }}>Health information</h2>
-  {flash && (<span className="flash">{flash}</span>)}
+      <h2 style={{ textAlign: 'center' }}>Health information</h2>
+      {flash && (<span className="flash">{flash}</span>)}
       <form
-        onSubmit={(e) => {
+        onSubmit={e => {
           e.preventDefault();
           updateInformation({
             old: information,
@@ -42,7 +43,7 @@ const HealthInformation = ({ updateInformation, information, flash }) => {
             type="text"
             value={age}
             placeholder="eg. 33"
-            onChange={(e) => setAge(e.target.value)}
+            onChange={e => setAge(e.target.value)}
           />
         </div>
         <div>
@@ -50,9 +51,9 @@ const HealthInformation = ({ updateInformation, information, flash }) => {
           <select
             value={gender}
             defaultValue={information && information.gender}
-            onChange={(e) => setGender(e.target.value)}
+            onChange={e => setGender(e.target.value)}
           >
-            <option value=''>Select gender</option>
+            <option value="">Select gender</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
             <option value="trans">Transgender</option>
@@ -64,7 +65,7 @@ const HealthInformation = ({ updateInformation, information, flash }) => {
             type="text"
             placeholder="eg. 54"
             value={weight}
-            onChange={(e) => setWeight(e.target.value)}
+            onChange={e => setWeight(e.target.value)}
           />
         </div>
         <div>
@@ -73,26 +74,26 @@ const HealthInformation = ({ updateInformation, information, flash }) => {
             type="text"
             placeholder="eg. 5.6"
             value={height}
-            onChange={(e) => setHeight(e.target.value)}
+            onChange={e => setHeight(e.target.value)}
           />
         </div>
         <div>
           <label>Personal Information</label>
           <textarea
             value={personal}
-            onChange={(e) => setPersonal(e.target.value)}
-          ></textarea>
+            onChange={e => setPersonal(e.target.value)}
+          />
         </div>
         <div>
           <label>Family Information</label>
           <textarea
             value={family}
-            onChange={(e) => setFamily(e.target.value)}
-          ></textarea>
+            onChange={e => setFamily(e.target.value)}
+          />
         </div>
 
         <div>
-          <div></div>
+          <div />
           <button type="submit">Update Information</button>
         </div>
       </form>
@@ -102,9 +103,21 @@ const HealthInformation = ({ updateInformation, information, flash }) => {
 
 HealthInformation.propTypes = {
   updateInformation: PropTypes.func,
+  information: {},
+  flash: '',
 };
 
 HealthInformation.defaultProps = {
   updateInformation: () => undefined,
+  information: PropTypes.shape({
+    id: PropTypes.number,
+    age: PropTypes.string,
+    gender: PropTypes.string,
+    height: PropTypes.string,
+    weight: PropTypes.string,
+    family: PropTypes.string,
+    personal: PropTypes.string,
+  }),
+  flash: PropTypes.string,
 };
 export default HealthInformation;

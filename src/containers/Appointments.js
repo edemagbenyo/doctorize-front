@@ -1,15 +1,16 @@
-import React, { useEffect } from "react";
-import "../styles/tablets/appointments.scss";
-import { connect } from "react-redux";
-import { getAppointments } from "../store/actions/appointments";
-import moment from "moment";
+import React, { useEffect } from 'react';
+import '../styles/tablets/appointments.scss';
+import { connect } from 'react-redux';
+import moment from 'moment';
 import Cookies from 'js-cookie';
+import PropTypes from 'prop-types';
+import { getAppointments } from '../store/actions/appointments';
 
-const Appointments = ({ appointments, getAppointments, user_type }) => {
+const Appointments = ({ appointments, getAppointments }) => {
   useEffect(() => {
     getAppointments();
   }, [getAppointments]);
-  return Cookies.get('user_type') === "doctor" ? (
+  return Cookies.get('user_type') === 'doctor' ? (
     <div className="container-appointments">
       <table>
         <thead>
@@ -21,9 +22,9 @@ const Appointments = ({ appointments, getAppointments, user_type }) => {
         </thead>
         <tbody>
           {appointments && appointments.length > 0 ? (
-            appointments.map((app) => (
+            appointments.map(app => (
               <tr key={app.id}>
-                <td>{`${app.date}/${moment(app.time).format("h:m")}`}</td>
+                <td>{`${app.date}/${moment(app.time).format('h:m')}`}</td>
                 <td>{app.user.name}</td>
                 <td>{app.meeting_link}</td>
               </tr>
@@ -46,9 +47,9 @@ const Appointments = ({ appointments, getAppointments, user_type }) => {
         </thead>
         <tbody>
           {appointments && appointments.length > 0 ? (
-            appointments.map((app) => (
+            appointments.map(app => (
               <tr key={app.id}>
-                <td>{`${app.date}/${moment(app.time).format("h:m")}`}</td>
+                <td>{`${app.date}/${moment(app.time).format('h:m')}`}</td>
                 <td>{app.doctor.name}</td>
                 <td>{app.meeting_link}</td>
               </tr>
@@ -61,16 +62,31 @@ const Appointments = ({ appointments, getAppointments, user_type }) => {
     </div>
   );
 };
-const mapStateToProps = (state) => {
-  console.log(state.appointments);
-  return {
-    appointments: state.appointments.appointments,
-    user_type: state.auth.user_type,
-  };
+
+Appointments.defaultProps = {
+  appointments: [],
+  getAppointments: () => undefined,
 };
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getAppointments: () => dispatch(getAppointments()),
-  };
+
+Appointments.propTypes = {
+  appointments: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+      meeting_link: PropTypes.string,
+      doctor: PropTypes.shape({
+        name: PropTypes.string,
+      }),
+    }),
+  ),
+  getAppointments: PropTypes.func,
 };
+
+const mapStateToProps = state => ({
+  appointments: state.appointments.appointments,
+  user_type: state.auth.user_type,
+});
+const mapDispatchToProps = dispatch => ({
+  getAppointments: () => dispatch(getAppointments()),
+});
 export default connect(mapStateToProps, mapDispatchToProps)(Appointments);

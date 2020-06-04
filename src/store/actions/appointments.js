@@ -1,61 +1,61 @@
-import {BOOK_APPOINTMENT, GET_APPOINTMENTS} from "../actionTypes";
-import axios from "axios";
-import { url } from "../../config";
+import axios from 'axios';
 import moment from 'moment';
 import Cookies from 'js-cookie';
+import { url } from '../../config';
+import { BOOK_APPOINTMENT, GET_APPOINTMENTS } from '../actionTypes';
 
-export const bookAppointment = (data) => (dispatch) => {
-  const token = Cookies.get("auth_token");
-  
-  const moment_date = moment(data.date);
+export const bookAppointment = data => dispatch => {
+  const token = Cookies.get('auth_token');
+
+  const momentDate = moment(data.date);
   axios
     .post(
       `${url}/appointments`,
-      { ...data, date:moment_date.format("YYYY-MM-DD"), time: moment_date.format("HH:mm:ss")},
-      { headers: { Authorization: token } }
+      { ...data, date: momentDate.format('YYYY-MM-DD'), time: momentDate.format('HH:mm:ss') },
+      { headers: { Authorization: token } },
     )
-    .then(({data})=>{
+    .then(({ data }) => {
       dispatch({
-        type:BOOK_APPOINTMENT
-      })
+        type: BOOK_APPOINTMENT,
+      });
     }).catch(
-      err=>console.log(err.response)
+      err => err.response,
     );
 };
 
-//get appointments for current logged in user.
-export const getAppointments = () => (dispatch) => {
-  const token = Cookies.get("auth_token");
+// get appointments for current logged in user.
+export const getAppointments = () => dispatch => {
+  const token = Cookies.get('auth_token');
 
   axios
     .get(
       `${url}/appointments`,
-      { headers: { Authorization: token } }
+      { headers: { Authorization: token } },
     )
-    .then(({data})=>{
+    .then(({ data }) => {
       dispatch({
-        type:GET_APPOINTMENTS,
-        appointments:data
-      })
+        type: GET_APPOINTMENTS,
+        appointments: data,
+      });
     }).catch(
-      err=>console.log(err.response)
+      err => err.response,
     );
 };
-//get appointments for current logged in user.
-export const getDoctorAppointments = () => (dispatch) => {
-  const token = Cookies.get("auth_token");
+// get appointments for current logged in user.
+export const getDoctorAppointments = () => dispatch => {
+  const token = Cookies.get('auth_token');
 
   axios
     .get(
       `${url}/appointments`,
-      { headers: { Authorization: token } }
+      { headers: { Authorization: token } },
     )
-    .then(({data})=>{
+    .then(({ data }) => {
       dispatch({
-        type:GET_APPOINTMENTS,
-        appointments:data
-      })
+        type: GET_APPOINTMENTS,
+        appointments: data,
+      });
     }).catch(
-      err=>console.log(err.response)
+      err => err.response,
     );
 };
