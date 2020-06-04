@@ -10,6 +10,7 @@ const RegisterDoctor = ({isLoggedIn, registerDoctor, specialities,getSpecialitie
   const [email, setEmail] = useState('')
   const [experience_year, setExperienceYear] = useState('')
   const [hospital, setHospital] = useState('')
+  const [city, setCity] = useState('')
   const [speciality, setSpeciality] = useState('')
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -22,7 +23,7 @@ const RegisterDoctor = ({isLoggedIn, registerDoctor, specialities,getSpecialitie
     <div className="register-container">
       <form onSubmit={(e) => {
           e.preventDefault();
-          registerDoctor({ name, email, experience_year, hospital,speciality, username, password });
+          registerDoctor({ name, email, experience_year, hospital,speciality, username, password, city });
         }}>
         <h1>Create an account</h1>
         <h2>Personal Information</h2>
@@ -44,6 +45,9 @@ const RegisterDoctor = ({isLoggedIn, registerDoctor, specialities,getSpecialitie
             <option value=''>Select speciality</option>
       {(specialities && specialities.length>0)?specialities.map(sp=><option key={sp.id} value={sp.id}>{sp.name}</option>):<option>No Speciality</option>}
           </select>
+        </label>
+        <label htmlFor="city">
+          <input id="city" type="city" onChange={(e)=>setCity(e.target.value)} value={city} placeholder="City" />
         </label>
 
         <h2>Login Information</h2>

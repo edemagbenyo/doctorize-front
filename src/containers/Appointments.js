@@ -3,14 +3,14 @@ import "../styles/tablets/appointments.scss";
 import { connect } from "react-redux";
 import { getAppointments } from "../store/actions/appointments";
 import moment from "moment";
+import Cookies from 'js-cookie';
 
 const Appointments = ({ appointments, getAppointments, user_type }) => {
-  console.log(user_type);
   useEffect(() => {
     getAppointments();
   }, [getAppointments]);
-  return user_type === "doctor" ? (
-    <div className="container">
+  return Cookies.get('user_type') === "doctor" ? (
+    <div className="container-appointments">
       <table>
         <thead>
           <tr>
@@ -35,7 +35,7 @@ const Appointments = ({ appointments, getAppointments, user_type }) => {
       </table>
     </div>
   ) : (
-    <div className="container">
+    <div className="container-appointments">
       <table>
         <thead>
           <tr>

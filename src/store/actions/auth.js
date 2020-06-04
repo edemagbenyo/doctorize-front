@@ -93,6 +93,8 @@ export const logoutUser = (message = "You have been logged out!") => {
 
   Cookies.remove("auth_token");
   Cookies.remove("user");
+  Cookies.remove("isLoggedIn");
+  Cookies.remove("user_type");
   return {
     type: LOGOUT,
     message,
@@ -119,4 +121,5 @@ const saveInCookies = (data) => {
   Cookies.set("user", JSON.stringify(data.user));
   Cookies.set("auth_token", data.auth_token);
   Cookies.set("isLoggedIn", true);
+  Cookies.set('user_type',data.doctor?'doctor':'patient')
 };
