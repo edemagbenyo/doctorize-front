@@ -19,7 +19,9 @@ const Home = ({
   healthinfo,
   updateInformation,
   flash,
+  user_type
 }) => {
+  console.log(user_type);
   const { url, path } = useRouteMatch();
   useEffect(() => {
     getHealthInformation();
@@ -29,6 +31,9 @@ const Home = ({
       <div>
         <>
           <div>
+          <div className="welcome">
+              <h1>Welcome back, {user.name}</h1>
+            </div>
             <div className="menu">
               <ul>
                 <li>
@@ -37,10 +42,6 @@ const Home = ({
                 <li>
                   <Link to={`${url}/appointments`}>Appointments</Link>
                 </li>
-                <li>
-                  <Link to={`${url}/favourites`}>Favourites</Link>
-                </li>
-
                 <li>
                   <a
                     href="/"
@@ -54,9 +55,7 @@ const Home = ({
                 </li>
               </ul>
             </div>
-            <div className="welcome">
-              <h1>Welcome back, {user.name}</h1>
-            </div>
+           
           </div>
           <Switch>
             <Route path={`${path}/appointments`}>
@@ -94,6 +93,7 @@ const mapStateToProps = (state) => {
     user: state.auth.user,
     healthinfo: state.healthinfo.healthinfo,
     flash: state.healthinfo.flash,
+    user_type: state.auth.user_type
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

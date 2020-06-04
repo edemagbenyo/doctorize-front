@@ -22,6 +22,8 @@ export const bookAppointment = (data) => (dispatch) => {
       err=>console.log(err.response)
     );
 };
+
+//get appointments for current logged in user.
 export const getAppointments = () => (dispatch) => {
   const token = Cookies.get("auth_token");
 
@@ -31,7 +33,24 @@ export const getAppointments = () => (dispatch) => {
       { headers: { Authorization: token } }
     )
     .then(({data})=>{
-      console.log(data);
+      dispatch({
+        type:GET_APPOINTMENTS,
+        appointments:data
+      })
+    }).catch(
+      err=>console.log(err.response)
+    );
+};
+//get appointments for current logged in user.
+export const getDoctorAppointments = () => (dispatch) => {
+  const token = Cookies.get("auth_token");
+
+  axios
+    .get(
+      `${url}/appointments`,
+      { headers: { Authorization: token } }
+    )
+    .then(({data})=>{
       dispatch({
         type:GET_APPOINTMENTS,
         appointments:data

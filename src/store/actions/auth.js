@@ -21,11 +21,14 @@ export const loginUser = ({ username, password }) => (dispatch) => {
     .post(`${url}/auth/login`, { username, password })
     .then((data) => {
       //Set the token in secure cookie.
+      console.log(data);
       if(data.data){
         saveInCookies(data.data);
         dispatch({
           type: LOGIN,
           user: data.data.user,
+          user_type:data.data.doctor?'doctor':'patient',
+          doctor:data.data.doctor
         });
       }
     })

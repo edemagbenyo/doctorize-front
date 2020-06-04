@@ -2,13 +2,14 @@ import React, { useEffect } from "react";
 import "../styles/tablets/appointments.scss";
 import { connect } from "react-redux";
 import { getAppointments } from "../store/actions/appointments";
-import moment from 'moment';
+import moment from "moment";
 
-const Appointments = ({appointments,getAppointments}) => {
-  useEffect(()=>{
-    getAppointments()
-  },[getAppointments])
-  return (
+const Appointments = ({ appointments, getAppointments, user_type }) => {
+  console.log(user_type);
+  useEffect(() => {
+    getAppointments();
+  }, [getAppointments]);
+  return user_type === "doctor" ? (
     <div className="container">
       <table>
         <thead>
@@ -19,10 +20,35 @@ const Appointments = ({appointments,getAppointments}) => {
           </tr>
         </thead>
         <tbody>
-          {(appointments && appointments.length>0) ? (
+          {appointments && appointments.length > 0 ? (
             appointments.map((app) => (
               <tr key={app.id}>
-                <td>{`${app.date}/${moment(app.time).format('h:m')}`}</td>
+                <td>{`${app.date}/${moment(app.time).format("h:m")}`}</td>
+                <td>{app.user.name}</td>
+                <td>{app.meeting_link}</td>
+              </tr>
+            ))
+          ) : (
+            <tr>No Appointment!!!</tr>
+          )}
+        </tbody>
+      </table>
+    </div>
+  ) : (
+    <div className="container">
+      <table>
+        <thead>
+          <tr>
+            <th>Date/Time</th>
+            <th>Dr.</th>
+            <th>Meeting link</th>
+          </tr>
+        </thead>
+        <tbody>
+          {appointments && appointments.length > 0 ? (
+            appointments.map((app) => (
+              <tr key={app.id}>
+                <td>{`${app.date}/${moment(app.time).format("h:m")}`}</td>
                 <td>{app.doctor.name}</td>
                 <td>{app.meeting_link}</td>
               </tr>
@@ -36,8 +62,10 @@ const Appointments = ({appointments,getAppointments}) => {
   );
 };
 const mapStateToProps = (state) => {
+  console.log(state.appointments);
   return {
     appointments: state.appointments.appointments,
+    user_type: state.auth.user_type,
   };
 };
 const mapDispatchToProps = (dispatch) => {

@@ -11,6 +11,8 @@ export default (
     case ActionType.LOGIN:
       return {
         ...state,
+        user_type:action.user_type,
+        doctor:action.doctor,
         user: action.user,
         isLoading: false,
         isLoggedIn: true,

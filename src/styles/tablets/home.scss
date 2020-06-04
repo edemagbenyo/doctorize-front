@@ -1,7 +1,10 @@
 @import '../variables';
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .welcome{
+  }
   .menu{
+    border-bottom: 1px solid #cccccc;
     li{
       display: inline-block;
       border-radius: 25px;
