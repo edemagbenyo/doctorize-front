@@ -1,6 +1,5 @@
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
   .register-container {
-    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -9,11 +8,13 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      border-left: 1px solid #cccccc;
+
       label {
         text-align: center;
         width: 100%;
         
-        input {
+        input,select {
           width: 40%;
           border-radius: 25px;
           border: 1px solid #006faf;
@@ -23,6 +24,11 @@
           margin: 20px 0;
           outline: none;
         }
+        select{
+          // width: 100;
+        }
+       
+      
       }
       button {
         background-color: rgb(191, 19, 99);

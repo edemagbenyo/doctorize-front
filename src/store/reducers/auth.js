@@ -1,11 +1,11 @@
 import * as ActionType from "../actionTypes";
 export default (
-  state = { user: {}, healthinfo: {}, isLoading: false, isLoggedIn: false },
+  state = { user: {}, doctor:null, user_type: 'patient', healthinfo: {}, isLoading: false, isLoggedIn: false },
   action
 ) => {
   switch (action.type) {
     case ActionType.REGISTER:
-      return { ...state, user: action.user, isLoggedIn: true };
+      return { ...state, user: action.user, doctor: action.doctor, isLoggedIn: true, user_type:action.user_type };
     case ActionType.LOADING_REGISTER:
       return { ...state, isLoading: true };
     case ActionType.LOGIN:

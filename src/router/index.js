@@ -6,10 +6,12 @@ import Register from "../containers/Register";
 import Home from "../containers/Home";
 import Doctors from "../containers/Doctors";
 import Specialities from "../containers/Specialities";
+import RegisterDoctor from "../containers/RegisterDoctor";
 export default (
   <Switch>
     <Route path="/login"><Login/></Route>
     <Route path="/register"><Register/></Route>
+    <Route path="/registerdoc"><RegisterDoctor/></Route>
     <Route path="/specialities/:id/doctors"><Doctors/></Route>
     <Route path="/specialities"><Specialities/></Route>
     <Route path="/home"><Home/></Route>

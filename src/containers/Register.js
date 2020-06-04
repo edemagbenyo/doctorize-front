@@ -33,7 +33,7 @@ const Register = ({isLoggedIn, registerUser}) => {
         </label>
         <button>Register</button>
         <p>Already have an account? <Link to="login">Login</Link></p>
-        <p>Are you a doctor? <Link to="login">Register as doctor</Link></p>
+        <p>Are you a doctor? <Link to="registerdoc">Register as doctor</Link></p>
       </form>
     </div>
   );

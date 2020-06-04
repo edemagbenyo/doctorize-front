@@ -49,7 +49,7 @@ const HealthInformation = ({ updateInformation, information, flash }) => {
           <label>Gender</label>
           <select
             value={gender}
-            defaultValue={information.gender}
+            defaultValue={information && information.gender}
             onChange={(e) => setGender(e.target.value)}
           >
             <option value=''>Select gender</option>

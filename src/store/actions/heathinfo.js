@@ -23,6 +23,7 @@ export const getHealthInformation = () => (dispatch) => {
       });
     })
     .catch((err) => {
+      console.log(err);
       if (err.response.status === 422) {
         logoutUser(err.response.data.message);
       }

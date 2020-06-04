@@ -67,24 +67,22 @@ export const registerDoctor = (data) => (dispatch) => {
   dispatch({
     type: LOADING_REGISTER,
   });
-
+  console.log(data);
   axios
-    .post(`${url}/signup/doctor`, {})
+    .post(`${url}/signup_doctor`, {...data})
     .then((data) => {
-      //Set the token in secure cookie.
+      console.log(data);
+      // Set the token in secure cookie.
       saveInCookies(data.data)
 
       dispatch({
         type: REGISTER,
         user: data.data.user,
+        doctor: data.data.doctor,
+        user_type: 'doctor'
       });
     })
-    .catch((error) => {
-      dispatch({
-        type: ERROR_REGISTER,
-        error,
-      });
-    });
+    .catch((error) => console.log(error.response));
 };
 
 export const logoutUser = (message = "You have been logged out!") => {
