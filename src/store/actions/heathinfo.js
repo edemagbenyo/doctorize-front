@@ -6,9 +6,9 @@ import {
 import { url } from "../../config";
 import axios from "axios";
 import { logoutUser } from "./auth";
-
+import Cookies from "js-cookie";
 export const getHealthInformation = () => (dispatch) => {
-  const token = localStorage.getItem("auth_token");
+  const token = Cookies.get("auth_token");
   dispatch({
     type: LOADING_HEALTHINFO,
   });
@@ -30,7 +30,7 @@ export const getHealthInformation = () => (dispatch) => {
 };
 
 export const updateInformation = (data) => (dispatch) => {
-  const token = localStorage.getItem("auth_token");
+  const token = Cookies.get("auth_token");
   if (!data.old) {
     //post
     axios

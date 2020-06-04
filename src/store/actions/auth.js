@@ -11,6 +11,7 @@ import {
 } from "../actionTypes";
 import { url } from "../../config";
 import axios from "axios";
+import Cookies from 'js-cookie';
 export const loginUser = ({ username, password }) => (dispatch) => {
   dispatch({
     type: LOADING_LOGIN,
@@ -21,7 +22,7 @@ export const loginUser = ({ username, password }) => (dispatch) => {
     .then((data) => {
       //Set the token in secure cookie.
       if(data.data){
-        saveInlocalStorage(data.data);
+        saveInCookies(data.data);
         dispatch({
           type: LOGIN,
           user: data.data.user,
@@ -46,9 +47,9 @@ export const registerUser = ({ name, email, username, password }) => (
     .post(`${url}/signup`, { name, email, username, password })
     .then((data) => {
       //Set the token in secure cookie.
-      localStorage.setItem("auth_token", data.data.auth_token);
-      localStorage.setItem("isLoggedIn", true);
-      localStorage.setItem("user", JSON.stringify(data.data.user));
+      Cookies.set("auth_token", data.data.auth_token);
+      Cookies.set("isLoggedIn", true);
+      Cookies.set("user", JSON.stringify(data.data.user));
 
       dispatch({
         type: REGISTER,
@@ -71,9 +72,7 @@ export const registerDoctor = (data) => (dispatch) => {
     .post(`${url}/signup/doctor`, {})
     .then((data) => {
       //Set the token in secure cookie.
-      localStorage.setItem("auth_token", data.data.auth_token);
-      localStorage.setItem("isLoggedIn", true);
-      localStorage.setItem("user", JSON.stringify(data.data.user));
+      saveInCookies(data.data)
 
       dispatch({
         type: REGISTER,
@@ -91,8 +90,8 @@ export const registerDoctor = (data) => (dispatch) => {
 export const logoutUser = (message = "You have been logged out!") => {
   //remove user from cookie
 
-  localStorage.removeItem("auth_token");
-  localStorage.removeItem("user");
+  Cookies.remove("auth_token");
+  Cookies.remove("user");
   return {
     type: LOGOUT,
     message,
@@ -100,8 +99,8 @@ export const logoutUser = (message = "You have been logged out!") => {
 };
 export const getUser = () => {
   //Get the rocookie if any
-  const token = localStorage.getItem("auth_token");
-  const user = localStorage.getItem("user");
+  const token = Cookies.get("auth_token");
+  const user = Cookies.get("user");
   if (!token || token === "" || !user) {
     return {
       type: NO_TOKEN,
@@ -110,15 +109,13 @@ export const getUser = () => {
   } else {
     return {
       type: GET_USER,
-      user: JSON.parse(localStorage.getItem("user")),
+      user: JSON.parse(Cookies.get("user")),
     };
   }
 };
 
-const saveInlocalStorage = (data) => {
-  console.log("saving to local storage");
-  localStorage.setItem("user", JSON.stringify(data.user));
-  localStorage.setItem("auth_token", data.auth_token);
-  localStorage.setItem("isLoggedIn", true);
-  console.log("done saving...");
+const saveInCookies = (data) => {
+  Cookies.set("user", JSON.stringify(data.user));
+  Cookies.set("auth_token", data.auth_token);
+  Cookies.set("isLoggedIn", true);
 };

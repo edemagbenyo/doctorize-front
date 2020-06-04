@@ -2,13 +2,12 @@ import {BOOK_APPOINTMENT, GET_APPOINTMENTS} from "../actionTypes";
 import axios from "axios";
 import { url } from "../../config";
 import moment from 'moment';
-
-const token = localStorage.getItem("auth_token");
+import Cookies from 'js-cookie';
 
 export const bookAppointment = (data) => (dispatch) => {
+  const token = Cookies.get("auth_token");
   
   const moment_date = moment(data.date);
-  console.log(data);
   axios
     .post(
       `${url}/appointments`,
@@ -24,7 +23,8 @@ export const bookAppointment = (data) => (dispatch) => {
     );
 };
 export const getAppointments = () => (dispatch) => {
-  console.log(token);
+  const token = Cookies.get("auth_token");
+
   axios
     .get(
       `${url}/appointments`,

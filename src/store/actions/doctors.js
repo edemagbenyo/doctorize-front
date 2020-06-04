@@ -6,9 +6,9 @@ import {
 import axios from "axios";
 import { url } from "../../config";
 import { logoutUser } from "./auth";
-
-const token = localStorage.getItem("auth_token");
+import Cookies from 'js-cookie';
 export const getDoctorsBySpeciality = (speciality_id) => (dispatch) => {
+  const token = Cookies.get("auth_token");
   dispatch({
     type: LOADING_DOCTORS,
   });
@@ -31,6 +31,8 @@ export const getDoctorsBySpeciality = (speciality_id) => (dispatch) => {
     });
 };
 export const getDoctors = () => (dispatch) => {
+  const token = Cookies.get("auth_token");
+
   dispatch({
     type: LOADING_DOCTORS,
   });
