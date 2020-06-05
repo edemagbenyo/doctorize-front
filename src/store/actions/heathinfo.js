@@ -32,7 +32,7 @@ export const getHealthInformation = () => dispatch => {
 
 export const updateInformation = data => dispatch => {
   const token = Cookies.get('auth_token');
-  if (Object.keys(data.old).length===0) {
+  if (Object.keys(data.old).length === 0) {
     // post
     axios
       .post(
@@ -48,13 +48,12 @@ export const updateInformation = data => dispatch => {
         { headers: { Authorization: token } },
       )
       .then(data => {
-        console.log(data);
         dispatch({
           type: UPDATE_HEALTHINFO,
           flash: 'Health information has been saved!',
         });
       })
-      .catch(err=>err);
+      .catch(err => err);
   } else {
     // update
     axios

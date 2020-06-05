@@ -123,7 +123,7 @@ HealthInformation.propTypes = {
 
 HealthInformation.defaultProps = {
   updateInformation: () => undefined,
-  information:{},
-  flash:''
+  information: {},
+  flash: '',
 };
 export default HealthInformation;
