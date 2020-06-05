@@ -109,12 +109,6 @@ const HealthInformation = ({ updateInformation, information, flash }) => {
 
 HealthInformation.propTypes = {
   updateInformation: PropTypes.func,
-  information: {},
-  flash: '',
-};
-
-HealthInformation.defaultProps = {
-  updateInformation: () => undefined,
   information: PropTypes.shape({
     id: PropTypes.number,
     age: PropTypes.string,
@@ -125,5 +119,11 @@ HealthInformation.defaultProps = {
     personal: PropTypes.string,
   }),
   flash: PropTypes.string,
+};
+
+HealthInformation.defaultProps = {
+  updateInformation: () => undefined,
+  information:{},
+  flash:''
 };
 export default HealthInformation;
