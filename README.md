@@ -1,4 +1,4 @@
-# Catalogue of recipes
+# Doctor appointments(Doctorize)
 
 <!--- These are examples. See https://shields.io for others or to customize this set of shields. You might want to include dependencies, project status and licence info here --->
 ![GitHub repo size](https://img.shields.io/github/repo-size/edemagbenyo/doctorize-front)
@@ -46,9 +46,9 @@ Builds the app for production to the `build` folder.<br />
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 
-## Contributing to catalogue of receipes
+## Contributing to Doctorize
 <!--- If your README is long or you have some specific process or steps you want contributors to follow, consider creating a separate CONTRIBUTING.md file--->
-To contribute to the catalogue of receipes, follow these steps:
+To contribute to the Doctorize, follow these steps:
 
 1. Fork this repository.
 2. Create a branch: `git checkout -b feature/awesome_branch`.
