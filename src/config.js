@@ -4,7 +4,7 @@ switch (process.env.NODE_ENV) {
     url = 'http://localhost:3001';
     break;
   case 'production':
-    url = 'https://doctorize-api.herokuapp.com/doctors';
+    url = 'https://doctorize-api.herokuapp.com';
     break;
   default:
     url = 'https://doctorize-api.herokuapp.com';
