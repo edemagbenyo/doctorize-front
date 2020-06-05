@@ -33,23 +33,24 @@ const BookAppointment = ({ bookAppointment, userid }) => {
       }}
       >
         <div>
-          <label>Meeting information</label>
+          <label htmlFor="info">Meeting information</label>
           <textarea
+            id="info"
             value={info}
             onChange={e => setInfo(e.target.value)}
           />
         </div>
         <div>
-          <label>Meeting link</label>
-          <input value={link} readOnly />
+          <label htmlFor="link">Meeting link</label>
+          <input id="link" value={link} readOnly />
         </div>
         <div>
-          <label>Guest</label>
-          <input value={guest} onChange={e => setGuest(e.target.value)} />
+          <label htmlFor="guest">Guest</label>
+          <input id="guest" value={guest} onChange={e => setGuest(e.target.value)} />
         </div>
         <div>
-          <label>Date</label>
-          <DateTimePicker onChange={setDate} value={date} />
+          <label htmlFor="date">Date</label>
+          <DateTimePicker id="date" onChange={setDate} value={date} />
         </div>
         <div>
           <div> </div>

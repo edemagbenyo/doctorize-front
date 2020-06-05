@@ -38,8 +38,9 @@ const HealthInformation = ({ updateInformation, information, flash }) => {
         }}
       >
         <div>
-          <label>Age</label>
+          <label htmlFor="age">Age</label>
           <input
+            id="age"
             type="text"
             value={age}
             placeholder="eg. 33"
@@ -47,8 +48,9 @@ const HealthInformation = ({ updateInformation, information, flash }) => {
           />
         </div>
         <div>
-          <label>Gender</label>
+          <label htmlFor="gender">Gender</label>
           <select
+            id="gender"
             value={gender}
             defaultValue={information && information.gender}
             onChange={e => setGender(e.target.value)}
@@ -60,8 +62,9 @@ const HealthInformation = ({ updateInformation, information, flash }) => {
           </select>
         </div>
         <div>
-          <label>Weight</label>
+          <label htmlFor="weight">Weight</label>
           <input
+            id="weight"
             type="text"
             placeholder="eg. 54"
             value={weight}
@@ -69,8 +72,9 @@ const HealthInformation = ({ updateInformation, information, flash }) => {
           />
         </div>
         <div>
-          <label>Height(ft)</label>
+          <label htmlFor="height">Height(ft)</label>
           <input
+            id="height"
             type="text"
             placeholder="eg. 5.6"
             value={height}
@@ -78,15 +82,17 @@ const HealthInformation = ({ updateInformation, information, flash }) => {
           />
         </div>
         <div>
-          <label>Personal Information</label>
+          <label htmlFor="personal">Personal Information</label>
           <textarea
+            id="personal"
             value={personal}
             onChange={e => setPersonal(e.target.value)}
           />
         </div>
         <div>
-          <label>Family Information</label>
+          <label htmlFor="family">Family Information</label>
           <textarea
+            id="family"
             value={family}
             onChange={e => setFamily(e.target.value)}
           />
