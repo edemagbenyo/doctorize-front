@@ -10,6 +10,7 @@ import {
   LOADING_REGISTER,
   REGISTER,
   ERROR_REGISTER,
+  SERVER_DOWN
 } from '../actionTypes';
 import { url } from '../../config';
 
@@ -117,6 +118,12 @@ export const getUser = () => {
     user: JSON.parse(Cookies.get('user')),
   };
 };
+
+export const serverDown = ()=>{
+  return{
+    type: SERVER_DOWN
+  }
+}
 
 const saveInCookies = data => {
   Cookies.set('user', JSON.stringify(data.user));

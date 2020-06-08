@@ -6,7 +6,7 @@ import {
   UPDATE_HEALTHINFO,
 } from '../actionTypes';
 import { url } from '../../config';
-import { logoutUser } from './auth';
+import { logoutUser, serverDown } from './auth';
 
 export const getHealthInformation = () => dispatch => {
   const token = Cookies.get('auth_token');
@@ -24,8 +24,10 @@ export const getHealthInformation = () => dispatch => {
       });
     })
     .catch(err => {
-      if (err.response.status === 422) {
+      if (err.response && err.response.status === 422) {
         logoutUser(err.response.data.message);
+      }else{
+        serverDown()
       }
     });
 };

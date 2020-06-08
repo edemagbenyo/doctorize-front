@@ -8,6 +8,7 @@ export default (
     healthinfo: {},
     isLoading: false,
     isLoggedIn: false,
+    isServerDown:false
   },
   action,
 ) => {
@@ -19,9 +20,10 @@ export default (
         doctor: action.doctor,
         isLoggedIn: true,
         userType: action.userType,
+        isServerDown:false,
       };
     case ActionType.LOADING_REGISTER:
-      return { ...state, isLoading: true };
+      return { ...state, isLoading: true, isServerDown:false, };
     case ActionType.LOGIN:
       return {
         ...state,
@@ -30,15 +32,18 @@ export default (
         user: action.user,
         isLoading: false,
         isLoggedIn: true,
+        isServerDown:false,
       };
     case ActionType.LOADING_LOGIN:
-      return { ...state, isLoading: true };
+      return { ...state, isLoading: true, isServerDown:false, };
     case ActionType.GET_USER:
-      return { ...state, user: action.user, isLoggedIn: true };
+      return { ...state, user: action.user, isLoggedIn: true , isServerDown:false,};
     case ActionType.NO_TOKEN:
       return { ...state };
     case ActionType.LOGOUT:
-      return { ...state, user: {}, isLoggedIn: false };
+      return { ...state, user: {}, isLoggedIn: false, isServerDown:false, };
+    case ActionType.SERVER_DOWN:
+      return {...state, isServerDown:true}
     default:
       return state;
   }

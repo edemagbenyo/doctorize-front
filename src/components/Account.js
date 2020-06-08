@@ -18,8 +18,9 @@ const Account = ({ isLoggedIn }) => {
   }
   return (
     <div>
-      <Link to="home" />
+      <Link to="/home">
       My Account
+      </Link>
     </div>
   );
 };
