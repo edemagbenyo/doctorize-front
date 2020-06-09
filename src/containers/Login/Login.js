@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import '../styles/tablets/register.scss';
+import '../Register/Register.scss';
 import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { loginUser } from '../store/actions/auth';
+import { loginUser } from '../../store/actions/auth';
 
 const Login = ({ loginUser, isLoggedIn }) => {
   const [username, setUsername] = useState('');

@@ -1,9 +1,9 @@
 import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Logo from './Logo';
-import Facebook from '../images/facebook.png';
-import Twitter from '../images/twitter.png';
+import Logo from '../Logo/Logo';
+import Facebook from '../../images/facebook.png';
+import Twitter from '../../images/twitter.png';
 
 const Navbar = ({ user }) => {
   const { pathname } = useLocation();

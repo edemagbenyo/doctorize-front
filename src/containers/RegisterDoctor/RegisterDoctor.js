@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import '../styles/tablets/register.scss';
+import '../Register/Register.scss';
 import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { registerDoctor } from '../store/actions/auth';
-import { getSpecialities } from '../store/actions/specialities';
+import { registerDoctor } from '../../store/actions/auth';
+import { getSpecialities } from '../../store/actions/specialities';
 
 const RegisterDoctor = ({
   isLoggedIn,

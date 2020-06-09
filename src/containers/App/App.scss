@@ -1,4 +1,4 @@
-@import '../variables.scss';
+@import "../../styles/variables";
 ul {
   list-style: none;
   margin: 0;
@@ -40,7 +40,6 @@ ul {
         display: flex;
         flex-direction: column;
         align-items: center;
-     
       }
 
       .socials {
@@ -68,10 +67,10 @@ ul {
       width: 80%;
     }
   }
-  .flash{
+  .flash {
     background-color: $blue;
     padding: 5px;
-    color: #FFFFFF;
+    color: #ffffff;
     display: block;
   }
 }

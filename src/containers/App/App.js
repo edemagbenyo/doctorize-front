@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Routes from '../router/index';
-import Navbar from '../components/Navbar';
-import '../styles/tablets/main.scss';
-import { getUser } from '../store/actions/auth';
+import Routes from '../../router/index';
+import Navbar from '../../components/Navbar/Navbar';
+import './App.scss';
+import { getUser } from '../../store/actions/auth';
 
 function App({ getUser, user }) {
   const { pathname } = useLocation();

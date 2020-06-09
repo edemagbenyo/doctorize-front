@@ -2,17 +2,17 @@ import React, { useEffect } from 'react';
 import {
   Switch, Route, Link, useRouteMatch, Redirect,
 } from 'react-router-dom';
-import '../styles/tablets/home.scss';
+import './Home.scss';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Appointments from './Appointments';
-import { logoutUser } from '../store/actions/auth';
-import HealthInformation from '../components/HeathInformation';
+import Appointments from '../Appointments/Appointments';
+import { logoutUser } from '../../store/actions/auth';
+import HealthInformation from '../../components/HealthInformation/HeathInformation';
 import {
   getHealthInformation,
   updateInformation,
-} from '../store/actions/heathinfo';
-import BookAppointment from './BookAppointment';
+} from '../../store/actions/heathinfo';
+import BookAppointment from '../BookAppointment/BookAppointment';
 
 const Home = ({
   isLoggedIn,

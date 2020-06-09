@@ -13,22 +13,19 @@
       label {
         text-align: center;
         width: 100%;
-        
-        input,select {
+
+        input,
+        select {
           width: 40%;
           border-radius: 25px;
           border: 1px solid #006faf;
           padding: 10px;
-          padding-left:30px ;
+          padding-left: 30px;
           font-size: 1.5em;
           margin: 20px 0;
           outline: none;
         }
-        select{
-          // width: 100;
-        }
-       
-      
+
       }
       button {
         background-color: rgb(191, 19, 99);
@@ -36,7 +33,7 @@
         border: none;
         border-radius: 25px;
         font-size: 1.5em;
-        padding:10px 20px;
+        padding: 10px 20px;
       }
     }
   }

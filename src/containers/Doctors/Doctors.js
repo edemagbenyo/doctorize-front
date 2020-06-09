@@ -5,10 +5,10 @@ import PropTypes from 'prop-types';
 import {
   getDoctors,
   getDoctorsBySpeciality,
-} from '../store/actions/doctors';
-import '../styles/tablets/doctors.scss';
-import Doctor from '../components/Doctor';
-import Loading from '../components/Loading';
+} from '../../store/actions/doctors';
+import './Doctors.scss';
+import Doctor from '../../components/Doctor/Doctor';
+import Loading from '../../components/Loading/Loading';
 
 const Doctors = ({
   doctors, getDoctors, isLoading, getDoctorsBySpeciality, speciality,

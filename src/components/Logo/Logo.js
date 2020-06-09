@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LogoImg from '../images/logo.png';
+import LogoImg from '../../images/logo.png';
 
 const Logo = () => (
   <div className="logo">

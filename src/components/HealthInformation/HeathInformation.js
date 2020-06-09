@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/tablets/healthinfo.scss';
+import './HealthInformation.scss';
 import PropTypes from 'prop-types';
 
 const HealthInformation = ({ updateInformation, information, flash }) => {

@@ -1,48 +1,47 @@
-@import '../variables';
+@import "../../styles/variables";
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
-  .book-container{
+  .book-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    form{
+    form {
       display: flex;
       flex-direction: column;
       align-items: center;
-      &>div{
+      & > div {
         width: 150%;
         display: flex;
-        margin:10px 0;
-        label{
+        margin: 10px 0;
+        label {
           width: 40%;
           text-align: right;
         }
-        &>input, &>div{
-          margin:0 10px;
+        & > input,
+        & > div {
+          margin: 0 10px;
           width: 100%;
           font-size: 1.2em;
-          padding:10px;
+          padding: 10px;
         }
-        
-        &>textarea{
-          margin:0 10px;
+
+        & > textarea {
+          margin: 0 10px;
           width: 100%;
           font-size: 1.8em;
-          padding:10px;
+          padding: 10px;
           border-radius: 0;
-          
         }
-        &>select{
-          margin:0 10px;
+        & > select {
+          margin: 0 10px;
           width: 100%;
         }
-        
       }
-      button[type=submit]{
-        border:none;
+      button[type="submit"] {
+        border: none;
         background-color: $blue;
-        color:$white;
-        padding:15px;
+        color: $white;
+        padding: 15px;
         font-size: 1em;
       }
     }

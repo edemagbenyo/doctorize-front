@@ -1,29 +1,22 @@
-@import '../variables';
+@import "../../styles/variables";
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
-  .container{
-
-  }
-  .doctors{
-
+  .specialities {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     color: $white;
-    li{
+    li {
       text-align: center;
       width: 30%;
       background-color: $red;
-      margin:5px;
+      margin: 5px;
       cursor: pointer;
-      a{
-        color: $white;
-      }
     }
   }
-  .info{
+  .info {
     padding: 5px;
-    color:$white;
+    color: $white;
     background-color: $blue;
     width: 100%;
     display: block;

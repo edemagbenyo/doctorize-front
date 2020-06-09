@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Account from '../components/Account';
-import '../styles/tablets/welcome.scss';
-import Doctor1 from '../images/doctor1.png';
+import Account from '../../components/Account/Account';
+import './Welcome.scss';
+import Doctor1 from '../../images/doctor1.png';
 
 const Welcome = ({ isLoggedIn }) => (
   <div className="welcome-container">
