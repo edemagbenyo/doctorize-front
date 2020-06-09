@@ -1,22 +1,22 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import {
-  LOADING_LOGIN,
   LOGIN_FAILURE,
-  LOGIN,
   GET_USER,
   NO_TOKEN,
   LOGOUT,
-  LOADING_REGISTER,
-  REGISTER,
-  ERROR_REGISTER,
-  SERVER_DOWN
+  SERVER_DOWN,
+  LOGIN_LOADING,
+  LOGIN_SUCCESS,
+  REGISTER_LOADING,
+  REGISTER_SUCCESS,
+  REGISTER_FAILURE
 } from '../actionTypes';
 import { url } from '../../config';
 
 export const loginUser = ({ username, password }) => dispatch => {
   dispatch({
-    type: LOADING_LOGIN,
+    type: LOGIN_LOADING,
   });
 
   axios
@@ -27,7 +27,7 @@ export const loginUser = ({ username, password }) => dispatch => {
       if (data.data) {
         saveInCookies(data.data);
         dispatch({
-          type: LOGIN,
+          type: LOGIN_SUCCESS,
           user: data.data.user,
           userType: data.data.doctor ? 'doctor' : 'patient',
           doctor: data.data.doctor,
@@ -45,7 +45,7 @@ export const registerUser = ({
   name, email, username, password,
 }) => dispatch => {
   dispatch({
-    type: LOADING_REGISTER,
+    type: REGISTER_LOADING,
   });
 
   axios
@@ -59,36 +59,38 @@ export const registerUser = ({
       Cookies.set('user', JSON.stringify(data.data.user));
 
       dispatch({
-        type: REGISTER,
+        type: REGISTER_SUCCESS,
         user: data.data.user,
       });
     })
     .catch(error => {
       dispatch({
-        type: ERROR_REGISTER,
+        type: REGISTER_FAILURE,
         error,
       });
     });
 };
 export const registerDoctor = data => dispatch => {
   dispatch({
-    type: LOADING_REGISTER,
+    type: REGISTER_LOADING,
   });
 
   axios
-    .post(`${url}/signup_doctor`, { ...data })
+    .post(`${url}/signup_doctor`, { ...{} })
     .then(data => {
       // Set the token in secure cookie.
       saveInCookies(data.data);
 
       dispatch({
-        type: REGISTER,
+        type: REGISTER_SUCCESS,
         user: data.data.user,
         doctor: data.data.doctor,
         userType: 'doctor',
       });
     })
-    .catch(error => error.response);
+    .catch(error => {
+      
+    });
 };
 
 export const logoutUser = (message = 'You have been logged out!') => {

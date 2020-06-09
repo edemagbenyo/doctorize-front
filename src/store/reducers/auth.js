@@ -13,7 +13,7 @@ export default (
   action,
 ) => {
   switch (action.type) {
-    case ActionType.REGISTER:
+    case ActionType.REGISTER_SUCCESS:
       return {
         ...state,
         user: action.user,
@@ -22,9 +22,11 @@ export default (
         userType: action.userType,
         isServerDown:false,
       };
-    case ActionType.LOADING_REGISTER:
+    case ActionType.REGISTER_LOADING:
       return { ...state, isLoading: true, isServerDown:false, };
-    case ActionType.LOGIN:
+    case ActionType.REGISTER_FAILURE:
+      return { ...state, isLoading: true, isServerDown:false, };
+    case ActionType.LOGIN_SUCCESS:
       return {
         ...state,
         userType: action.userType,
@@ -34,7 +36,7 @@ export default (
         isLoggedIn: true,
         isServerDown:false,
       };
-    case ActionType.LOADING_LOGIN:
+    case ActionType.LOGIN_LOADING:
       return { ...state, isLoading: true, isServerDown:false, };
     case ActionType.GET_USER:
       return { ...state, user: action.user, isLoggedIn: true , isServerDown:false,};
