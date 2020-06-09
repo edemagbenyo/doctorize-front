@@ -18,9 +18,6 @@ const Navbar = ({ user }) => {
           <li className={pathname.endsWith('doctors') ? 'active' : ''}>
             <NavLink to="/doctors">Our doctors</NavLink>
           </li>
-          {/* <li className={pathname.includes('doctors') ? 'active' :''}>
-            <NavLink to="test">Self-Test(Covid)</NavLink>
-          </li> */}
           {user && Object.keys(user).length > 0 && (
             <li className={pathname.includes('home') ? 'active' : ''}>
               <NavLink to="/home">Dashboard</NavLink>

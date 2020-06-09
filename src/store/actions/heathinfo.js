@@ -14,7 +14,7 @@ export const getHealthInformation = () => dispatch => {
     type: LOADING_HEALTHINFO,
   });
   axios
-    .get(`${url}/users/healthinfos`, {
+    .get(`${url}/healthinfos`, {
       headers: { Authorization: token },
     })
     .then(data => {
@@ -38,7 +38,7 @@ export const updateInformation = data => dispatch => {
     // post
     axios
       .post(
-        `${url}/users/healthinfos/`,
+        `${url}/healthinfos/`,
         {
           age: data.age,
           gender: data.gender,
@@ -60,7 +60,7 @@ export const updateInformation = data => dispatch => {
     // update
     axios
       .put(
-        `${url}/users/healthinfos/${data.old.id}`,
+        `${url}/healthinfos/${data.old.id}`,
         {
           age: data.age,
           gender: data.gender,
