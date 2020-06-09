@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './HealthInformation.scss';
 import PropTypes from 'prop-types';
+import Alert from '../Alert/Alert';
 
 const HealthInformation = ({ updateInformation, information, flash }) => {
   const [age, setAge] = useState('');
@@ -22,7 +23,7 @@ const HealthInformation = ({ updateInformation, information, flash }) => {
   return (
     <div className="health-container">
       <h2 style={{ textAlign: 'center' }}>Health information</h2>
-      {flash && (<span className="flash">{flash}</span>)}
+      <Alert classname='info' message={flash}/>
       <form
         onSubmit={e => {
           e.preventDefault();

@@ -8,7 +8,9 @@ export default (
     healthinfo: {},
     isLoading: false,
     isLoggedIn: false,
-    isServerDown:false
+    isServerDown:false,
+    isLoggedOut:false,
+    errMessage:null
   },
   action,
 ) => {
@@ -25,7 +27,9 @@ export default (
     case ActionType.REGISTER_LOADING:
       return { ...state, isLoading: true, isServerDown:false, };
     case ActionType.REGISTER_FAILURE:
-      return { ...state, isLoading: true, isServerDown:false, };
+      return { ...state, isLoading: false, isServerDown:false, };
+    case ActionType.LOGIN_FAILURE:
+      return { ...state, isLoading: false, isServerDown:false, errMessage: action.message};
     case ActionType.LOGIN_SUCCESS:
       return {
         ...state,
@@ -43,7 +47,7 @@ export default (
     case ActionType.NO_TOKEN:
       return { ...state };
     case ActionType.LOGOUT:
-      return { ...state, user: {}, isLoggedIn: false, isServerDown:false, };
+      return { ...state, user: {}, isLoggedIn: false, isServerDown:false,isLoggedOut:true };
     case ActionType.SERVER_DOWN:
       return {...state, isServerDown:true}
     default:
