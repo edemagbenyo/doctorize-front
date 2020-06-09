@@ -10,7 +10,7 @@ import {
   LOGIN_SUCCESS,
   REGISTER_LOADING,
   REGISTER_SUCCESS,
-  REGISTER_FAILURE
+  REGISTER_FAILURE,
 } from '../actionTypes';
 import { url } from '../../config';
 
@@ -37,7 +37,7 @@ export const loginUser = ({ username, password }) => dispatch => {
     .catch(error => {
       dispatch({
         type: LOGIN_FAILURE,
-        message:error.response.data.message,
+        message: error.response.data.message,
       });
     });
 };
@@ -89,7 +89,7 @@ export const registerDoctor = data => dispatch => {
       });
     })
     .catch(error => {
-      
+
     });
 };
 
@@ -121,11 +121,9 @@ export const getUser = () => {
   };
 };
 
-export const serverDown = ()=>{
-  return{
-    type: SERVER_DOWN
-  }
-}
+export const serverDown = () => ({
+  type: SERVER_DOWN,
+});
 
 const saveInCookies = data => {
   Cookies.set('user', JSON.stringify(data.user));

@@ -19,7 +19,7 @@ const Account = ({ isLoggedIn }) => {
   return (
     <div>
       <Link to="/home">
-      My Account
+        My Account
       </Link>
     </div>
   );

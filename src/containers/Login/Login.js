@@ -6,14 +6,16 @@ import PropTypes from 'prop-types';
 import { loginUser } from '../../store/actions/auth';
 import Alert from '../../components/Alert/Alert';
 
-const Login = ({ loginUser, isLoggedIn, isLoading, errMessage }) => {
+const Login = ({
+  loginUser, isLoggedIn, isLoading, errMessage,
+}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   if (isLoggedIn) return <Redirect to="home" />;
   return (
-    
+
     <div className="register-container">
-     
+
       <form
         onSubmit={e => {
           e.preventDefault();
@@ -21,7 +23,7 @@ const Login = ({ loginUser, isLoggedIn, isLoading, errMessage }) => {
         }}
       >
         <h1>Log in account</h1>
-        <Alert classname="error" message={errMessage}/>
+        <Alert classname="error" message={errMessage} />
         <label htmlFor="username">
           <input
             id="username"
@@ -40,7 +42,10 @@ const Login = ({ loginUser, isLoggedIn, isLoading, errMessage }) => {
             value={password}
           />
         </label>
-        <button type="submit"> {isLoading ? 'loading...' :'Login'}</button>
+        <button type="submit">
+          {' '}
+          {isLoading ? 'loading...' : 'Login'}
+        </button>
         <p>
           Don &apos; t have an account?
           <Link to="register">Register</Link>
@@ -54,7 +59,7 @@ Login.defaultProps = {
   loginUser: () => undefined,
   isLoggedIn: false,
   isLoading: false,
-  errMessage: ''
+  errMessage: '',
 };
 
 Login.propTypes = {
@@ -68,7 +73,7 @@ Login.propTypes = {
 const maptStateToProps = state => ({
   isLoggedIn: state.auth.isLoggedIn,
   isLoading: state.auth.isLoading,
-  errMessage: state.auth.errMessage
+  errMessage: state.auth.errMessage,
 });
 const mapDipatchToProps = dispatch => ({
   loginUser: data => {

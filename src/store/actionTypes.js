@@ -1,5 +1,4 @@
 
-
 export const SERVER_DOWN = 'SERVER_DOWN';
 export const LOGOUT = 'LOGOUT';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';

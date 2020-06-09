@@ -8,9 +8,9 @@ export default (
     healthinfo: {},
     isLoading: false,
     isLoggedIn: false,
-    isServerDown:false,
-    isLoggedOut:false,
-    errMessage:null
+    isServerDown: false,
+    isLoggedOut: false,
+    errMessage: null,
   },
   action,
 ) => {
@@ -22,14 +22,16 @@ export default (
         doctor: action.doctor,
         isLoggedIn: true,
         userType: action.userType,
-        isServerDown:false,
+        isServerDown: false,
       };
     case ActionType.REGISTER_LOADING:
-      return { ...state, isLoading: true, isServerDown:false, };
+      return { ...state, isLoading: true, isServerDown: false };
     case ActionType.REGISTER_FAILURE:
-      return { ...state, isLoading: false, isServerDown:false, };
+      return { ...state, isLoading: false, isServerDown: false };
     case ActionType.LOGIN_FAILURE:
-      return { ...state, isLoading: false, isServerDown:false, errMessage: action.message};
+      return {
+        ...state, isLoading: false, isServerDown: false, errMessage: action.message,
+      };
     case ActionType.LOGIN_SUCCESS:
       return {
         ...state,
@@ -38,18 +40,22 @@ export default (
         user: action.user,
         isLoading: false,
         isLoggedIn: true,
-        isServerDown:false,
+        isServerDown: false,
       };
     case ActionType.LOGIN_LOADING:
-      return { ...state, isLoading: true, isServerDown:false, };
+      return { ...state, isLoading: true, isServerDown: false };
     case ActionType.GET_USER:
-      return { ...state, user: action.user, isLoggedIn: true , isServerDown:false,};
+      return {
+        ...state, user: action.user, isLoggedIn: true, isServerDown: false,
+      };
     case ActionType.NO_TOKEN:
       return { ...state };
     case ActionType.LOGOUT:
-      return { ...state, user: {}, isLoggedIn: false, isServerDown:false,isLoggedOut:true };
+      return {
+        ...state, user: {}, isLoggedIn: false, isServerDown: false, isLoggedOut: true,
+      };
     case ActionType.SERVER_DOWN:
-      return {...state, isServerDown:true}
+      return { ...state, isServerDown: true };
     default:
       return state;
   }

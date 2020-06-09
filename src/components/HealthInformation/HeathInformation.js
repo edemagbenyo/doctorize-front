@@ -3,7 +3,9 @@ import './HealthInformation.scss';
 import PropTypes from 'prop-types';
 import Alert from '../Alert/Alert';
 
-const HealthInformation = ({ updateInformation, information, flash, isLoading }) => {
+const HealthInformation = ({
+  updateInformation, information, flash, isLoading,
+}) => {
   const [age, setAge] = useState('');
   const [gender, setGender] = useState('');
   const [weight, setWeight] = useState('');
@@ -23,7 +25,7 @@ const HealthInformation = ({ updateInformation, information, flash, isLoading })
   return (
     <div className="health-container">
       <h2 style={{ textAlign: 'center' }}>Health information</h2>
-      <Alert classname='info' message={flash}/>
+      <Alert classname="info" message={flash} />
       <form
         onSubmit={e => {
           e.preventDefault();
@@ -101,7 +103,7 @@ const HealthInformation = ({ updateInformation, information, flash, isLoading })
 
         <div>
           <div />
-      <button style={{width:'100%', padding:'10px'}} type="submit">{isLoading? 'Loading...' :'Update Information'}</button>
+          <button style={{ width: '100%', padding: '10px' }} type="submit">{isLoading ? 'Loading...' : 'Update Information'}</button>
         </div>
       </form>
     </div>
@@ -120,13 +122,13 @@ HealthInformation.propTypes = {
     personal: PropTypes.string,
   }),
   flash: PropTypes.string,
-  isLoading: PropTypes.bool
+  isLoading: PropTypes.bool,
 };
 
 HealthInformation.defaultProps = {
   updateInformation: () => undefined,
   information: {},
   flash: '',
-  isLoading:false
+  isLoading: false,
 };
 export default HealthInformation;
