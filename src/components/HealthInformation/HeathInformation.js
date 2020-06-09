@@ -3,7 +3,7 @@ import './HealthInformation.scss';
 import PropTypes from 'prop-types';
 import Alert from '../Alert/Alert';
 
-const HealthInformation = ({ updateInformation, information, flash }) => {
+const HealthInformation = ({ updateInformation, information, flash, isLoading }) => {
   const [age, setAge] = useState('');
   const [gender, setGender] = useState('');
   const [weight, setWeight] = useState('');
@@ -101,7 +101,7 @@ const HealthInformation = ({ updateInformation, information, flash }) => {
 
         <div>
           <div />
-          <button type="submit">Update Information</button>
+      <button style={{width:'100%', padding:'10px'}} type="submit">{isLoading? 'Loading...' :'Update Information'}</button>
         </div>
       </form>
     </div>
@@ -120,11 +120,13 @@ HealthInformation.propTypes = {
     personal: PropTypes.string,
   }),
   flash: PropTypes.string,
+  isLoading: PropTypes.bool
 };
 
 HealthInformation.defaultProps = {
   updateInformation: () => undefined,
   information: {},
   flash: '',
+  isLoading:false
 };
 export default HealthInformation;

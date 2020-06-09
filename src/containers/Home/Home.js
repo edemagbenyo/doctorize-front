@@ -22,7 +22,7 @@ const Home = ({
   healthinfo,
   updateInformation,
   flash,
-  userType,
+  isLoading,
 }) => {
   const { url, path } = useRouteMatch();
   useEffect(() => {
@@ -73,6 +73,7 @@ const Home = ({
                 information={healthinfo}
                 updateInformation={updateInformation}
                 flash={flash}
+                isLoading={isLoading}
               />
             </Route>
           </Switch>
@@ -92,6 +93,7 @@ Home.defaultProps = {
   updateInformation: () => undefined,
   flash: '',
   userType: 'patient',
+  isLoading: false
 };
 Home.propTypes = {
   isLoggedIn: PropTypes.bool,
@@ -106,6 +108,7 @@ Home.propTypes = {
   updateInformation: PropTypes.func,
   flash: PropTypes.string,
   userType: PropTypes.string,
+  isLoading: PropTypes.bool
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -119,6 +122,7 @@ const mapStateToProps = state => ({
   user: state.auth.user,
   healthinfo: state.healthinfo.healthinfo,
   flash: state.healthinfo.flash,
+  isLoading: state.healthinfo.isLoading,
   userType: state.auth.userType,
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

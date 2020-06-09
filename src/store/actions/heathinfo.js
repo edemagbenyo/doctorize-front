@@ -33,6 +33,9 @@ export const getHealthInformation = () => dispatch => {
 };
 
 export const updateInformation = data => dispatch => {
+  dispatch({
+    type: LOADING_HEALTHINFO,
+  });
   const token = Cookies.get('auth_token');
   if (Object.keys(data.old).length === 0) {
     // post
