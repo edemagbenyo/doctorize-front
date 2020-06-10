@@ -66,7 +66,7 @@ export const registerUser = ({
     .catch(error => {
       dispatch({
         type: REGISTER_FAILURE,
-        error,
+        message: error.response.data.message,
       });
     });
 };
@@ -89,7 +89,10 @@ export const registerDoctor = data => dispatch => {
       });
     })
     .catch(error => {
-      console.log(error.response);
+      dispatch({
+        type: REGISTER_FAILURE,
+        message: error.response.data.message,
+      });
     });
 };
 
