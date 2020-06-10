@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import './Register.scss';
 import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { registerUser } from '../../store/actions/auth';
+import './Register.scss';
 
 const Register = ({ isLoggedIn, registerUser, isLoading }) => {
   const [name, setName] = useState('');

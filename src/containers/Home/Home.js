@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import {
   Switch, Route, Link, useRouteMatch, Redirect,
 } from 'react-router-dom';
-import './Home.scss';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Appointments from '../Appointments/Appointments';
 import { logoutUser } from '../../store/actions/auth';
 import HealthInformation from '../../components/HealthInformation/HeathInformation';
+import './Home.scss';
 import {
   getHealthInformation,
   updateInformation,
