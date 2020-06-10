@@ -37,6 +37,8 @@
         "jsx-a11y/label-has-associated-control":"off",
         "camelcase":"off",
         "jsx-a11y/label-has-for":"off",
-        "import/no-mutable-exports":"off"
+        "import/no-mutable-exports":"off",
+        "jsx-a11y/href-no-hash": "off"
+
     }
 }
