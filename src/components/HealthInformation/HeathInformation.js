@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './HealthInformation.scss';
 import PropTypes from 'prop-types';
 import Alert from '../Alert/Alert';
+import './HealthInformation.scss';
 
 const HealthInformation = ({
   updateInformation, information, flash, isLoading,

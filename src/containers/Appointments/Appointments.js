@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import './Appointments.scss';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import Cookies from 'js-cookie';
 import PropTypes from 'prop-types';
 import { getAppointments } from '../../store/actions/appointments';
+import './Appointments.scss';
 
 const Appointments = ({ appointments, getAppointments }) => {
   useEffect(() => {
