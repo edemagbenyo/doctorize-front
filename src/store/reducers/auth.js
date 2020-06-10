@@ -23,6 +23,7 @@ export default (
         isLoggedIn: true,
         userType: action.userType,
         isServerDown: false,
+        isLoading: false
       };
     case ActionType.REGISTER_LOADING:
       return { ...state, isLoading: true, isServerDown: false };

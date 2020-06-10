@@ -76,7 +76,7 @@ export const registerDoctor = data => dispatch => {
   });
 
   axios
-    .post(`${url}/signup_doctor`, { ...{} })
+    .post(`${url}/signup_doctor`, { ...data })
     .then(data => {
       // Set the token in secure cookie.
       saveInCookies(data.data);
@@ -89,7 +89,7 @@ export const registerDoctor = data => dispatch => {
       });
     })
     .catch(error => {
-
+      console.log(error.response);
     });
 };
 

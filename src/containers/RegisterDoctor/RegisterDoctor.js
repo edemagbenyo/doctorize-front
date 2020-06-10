@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import '../Register/Register.scss';
-import { Link, Redirect } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { registerDoctor } from '../../store/actions/auth';
-import { getSpecialities } from '../../store/actions/specialities';
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import "../Register/Register.scss";
+import { Link, Redirect } from "react-router-dom";
+import PropTypes from "prop-types";
+import { registerDoctor } from "../../store/actions/auth";
+import { getSpecialities } from "../../store/actions/specialities";
 
 const RegisterDoctor = ({
   isLoggedIn,
   registerDoctor,
   specialities,
   getSpecialities,
+  isLoading,
 }) => {
   const [form, setForm] = useState({});
 
@@ -22,7 +23,7 @@ const RegisterDoctor = ({
   return (
     <div className="register-container">
       <form
-        onSubmit={e => {
+        onSubmit={(e) => {
           e.preventDefault();
           registerDoctor(form);
         }}
@@ -33,7 +34,7 @@ const RegisterDoctor = ({
           <input
             id="name"
             type="text"
-            onChange={e => setForm({ ...form, name: e.target.value })}
+            onChange={(e) => setForm({ ...form, name: e.target.value })}
             value={form.name}
             placeholder="Name"
           />
@@ -42,7 +43,7 @@ const RegisterDoctor = ({
           <input
             id="email"
             type="email"
-            onChange={e => setForm({ ...form, email: e.target.value })}
+            onChange={(e) => setForm({ ...form, email: e.target.value })}
             value={form.email}
             placeholder="Email"
           />
@@ -52,7 +53,9 @@ const RegisterDoctor = ({
           <input
             id="experience_year"
             type="experience_year"
-            onChange={e => setForm({ ...form, experience_year: e.target.value })}
+            onChange={(e) =>
+              setForm({ ...form, experience_year: e.target.value })
+            }
             value={form.experience_year}
             placeholder="Experience year"
           />
@@ -61,18 +64,18 @@ const RegisterDoctor = ({
           <input
             id="hospital"
             type="hospital"
-            onChange={e => setForm({ ...form, hospital: e.target.value })}
+            onChange={(e) => setForm({ ...form, hospital: e.target.value })}
             value={form.hospital}
             placeholder="Hospital"
           />
         </label>
         <label htmlFor="speciality">
           <select
-            onChange={e => setForm({ ...form, speciality: e.target.value })}
+            onChange={(e) => setForm({ ...form, speciality: e.target.value })}
           >
             <option value="">Select speciality</option>
             {specialities && specialities.length > 0 ? (
-              specialities.map(sp => (
+              specialities.map((sp) => (
                 <option key={sp.id} value={sp.id}>
                   {sp.name}
                 </option>
@@ -86,7 +89,7 @@ const RegisterDoctor = ({
           <input
             id="city"
             type="city"
-            onChange={e => setForm({ ...form, city: e.target.value })}
+            onChange={(e) => setForm({ ...form, city: e.target.value })}
             value={form.city}
             placeholder="City"
           />
@@ -97,7 +100,7 @@ const RegisterDoctor = ({
           <input
             id="username"
             type="text"
-            onChange={e => setForm({ ...form, username: e.target.value })}
+            onChange={(e) => setForm({ ...form, username: e.target.value })}
             value={form.username}
             placeholder="Username"
           />
@@ -106,12 +109,12 @@ const RegisterDoctor = ({
           <input
             id="password"
             type="password"
-            onChange={e => setForm({ ...form, password: e.target.value })}
+            onChange={(e) => setForm({ ...form, password: e.target.value })}
             value={form.password}
             placeholder="password"
           />
         </label>
-        <button type="submit">Register</button>
+        <button type="submit">{isLoading ? "Loading..." : "Register"}</button>
         <p>
           Already have an account?
           <Link to="login">Login</Link>
@@ -129,23 +132,26 @@ RegisterDoctor.defaultProps = {
   specialities: [],
   getSpecialities: () => undefined,
   registerDoctor: () => undefined,
+  isLoading: false,
 };
 RegisterDoctor.propTypes = {
   isLoggedIn: PropTypes.bool,
   specialities: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,
-    }),
+    })
   ),
   getSpecialities: PropTypes.func,
   registerDoctor: PropTypes.func,
+  isLoading: PropTypes.bool,
 };
-const maptStateToProps = state => ({
+const maptStateToProps = (state) => ({
   isLoggedIn: state.auth.isLoggedIn,
+  isLoading: state.auth.isLoading,
   specialities: state.specialities.specialities,
 });
-const mapDipatchToProps = dispatch => ({
-  registerDoctor: data => {
+const mapDipatchToProps = (dispatch) => ({
+  registerDoctor: (data) => {
     dispatch(registerDoctor(data));
   },
   getSpecialities: () => dispatch(getSpecialities()),
