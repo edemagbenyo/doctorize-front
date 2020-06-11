@@ -1,50 +1,45 @@
 @import "../../styles/variables";
 
 // @media only screen and (min-width: 768px) and (max-width: 1024px) {
-  .book-container {
+.book-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 40px;
+  form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    form {
+    width: 100%;
+    & > div {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      & > div {
-        width: 150%;
-        display: flex;
-        margin: 10px 0;
-        label {
-          width: 40%;
-          text-align: right;
-        }
-        & > input,
-        & > div {
-          margin: 0 10px;
-          width: 100%;
-          font-size: 1.2em;
-          padding: 10px;
-        }
+      margin: 10px 0;
+      padding: 0 10px;
 
-        & > textarea {
-          margin: 0 10px;
-          width: 100%;
-          font-size: 1.8em;
-          padding: 10px;
-          border-radius: 0;
-        }
-        & > select {
-          margin: 0 10px;
-          width: 100%;
-        }
+      & > input,
+      & > div {
+        font-size: 1.2em;
+        padding: 10px;
       }
-      button[type="submit"] {
-        border: none;
-        background-color: $blue;
-        color: $white;
-        padding: 15px;
-        font-size: 1em;
-        cursor: pointer;
+
+      & > textarea {
+        font-size: 1.8em;
+        padding: 10px;
+        border-radius: 0;
+      }
+      & > select {
+        margin: 0 10px;
       }
     }
+    button[type="submit"] {
+      border: none;
+      background-color: $blue;
+      color: $white;
+      padding: 15px;
+      font-size: 1em;
+      display: block;
+      cursor: pointer;
+    }
   }
+}
 // }

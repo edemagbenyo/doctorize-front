@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
+import './styles.scss'
 const Speciality = ({ speciality }) => {
   const history = useHistory();
   return (

@@ -2,11 +2,15 @@ import axios from 'axios';
 import moment from 'moment';
 import Cookies from 'js-cookie';
 import { url } from '../../config';
-import { BOOK_APPOINTMENT, GET_APPOINTMENTS } from '../actionTypes';
+import { BOOK_APPOINTMENT, GET_APPOINTMENTS, LOADING_APPOINTMENTS } from '../actionTypes';
 
 export const bookAppointment = data => dispatch => {
   const token = Cookies.get('auth_token');
 
+  //Loading booking...
+  dispatch({
+    type:LOADING_APPOINTMENTS
+  });
   const momentDate = moment(data.date);
   axios
     .post(

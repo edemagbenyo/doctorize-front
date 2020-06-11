@@ -2,18 +2,19 @@ import React, { useState } from 'react';
 import DateTimePicker from 'react-datetime-picker';
 import 'react-calendar/dist/Calendar.css';
 import { connect } from 'react-redux';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { bookAppointment } from '../../store/actions/appointments';
 import './styles.scss';
 
-const BookAppointment = ({ bookAppointment, userid }) => {
+const BookAppointment = ({ bookAppointment, userid, isLoading, isDone }) => {
   const [info, setInfo] = useState('');
   const [link] = useState('https://microverse.zoom.us/j/3749659607');
-  const [guest, setGuest] = useState('');
+  const [guest, setGuest] = useState('n/a');
   const [date, setDate] = useState(new Date());
   const { doctorid } = useParams();
   const { state } = useLocation();
+  if (isDone) return <Redirect to='/home/appointments' />
   return (
     <div className="book-container">
       <h3>
@@ -38,6 +39,7 @@ const BookAppointment = ({ bookAppointment, userid }) => {
             id="info"
             value={info}
             onChange={e => setInfo(e.target.value)}
+            required={true}
           />
         </div>
         <div>
@@ -54,7 +56,7 @@ const BookAppointment = ({ bookAppointment, userid }) => {
         </div>
         <div>
           <div> </div>
-          <button type="submit">Book</button>
+          <button type="submit" readOnly >{isLoading ? 'Loading...':'Book Appointment'}</button>
         </div>
       </form>
     </div>
@@ -64,17 +66,24 @@ const BookAppointment = ({ bookAppointment, userid }) => {
 BookAppointment.defaultProps = {
   bookAppointment: () => undefined,
   userid: null,
+  isLoading: false,
+  isDone: false
 };
 BookAppointment.propTypes = {
   bookAppointment: PropTypes.func,
   userid: PropTypes.number,
+  isLoading: PropTypes.bool,
+  isDone: PropTypes.bool,
 };
 
 const mapDispatchToProps = dispatch => ({
   bookAppointment: data => dispatch(bookAppointment(data)),
+
 });
 const mapStateToProps = state => ({
   userid: state.auth.user.id,
+  isLoading: state.appointments.isLoading,
+  isDone: state.appointments.isDone,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookAppointment);
