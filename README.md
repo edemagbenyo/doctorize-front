@@ -9,7 +9,7 @@
 
 [Doctorize](https://doctorize.herokuapp.com/)
 
-![Screenshot of the webpage]()
+![Screenshot of the webpage](https://github.com/edemagbenyo/doctorize-front/blob/implement-frontend/screenshots/overview.gif)
 
 ## Prerequisites
 
