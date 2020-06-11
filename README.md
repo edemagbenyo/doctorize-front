@@ -7,7 +7,8 @@
 ![GitHub forks](https://img.shields.io/github/forks/edemagbenyo/doctorize-front?style=social)
 ![Twitter Follow](https://img.shields.io/twitter/follow/edemagbenyo?style=social)
 
-[Doctorize](https://doctorize.herokuapp.com/)
+Doctorize is a doctor-patient appointment platform. The platform hosts doctors from different specialities from which patients can choose and book an appointment.   
+Doctorize is [live here](https://doctorize.herokuapp.com/).
 
 ![Screenshot of the webpage](https://github.com/edemagbenyo/doctorize-front/blob/implement-frontend/screenshots/overview.gif)
 
