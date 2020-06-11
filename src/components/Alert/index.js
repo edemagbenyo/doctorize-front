@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Alert.scss';
+import './styles.scss';
 
 const Alert = ({ classname, message }) => (message && <span className={`alert ${classname}`}>{message}</span>);
 Alert.defaultProps = {

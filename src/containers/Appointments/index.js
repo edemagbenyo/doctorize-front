@@ -4,7 +4,7 @@ import moment from 'moment';
 import Cookies from 'js-cookie';
 import PropTypes from 'prop-types';
 import { getAppointments } from '../../store/actions/appointments';
-import './Appointments.scss';
+import './styles.scss';
 
 const Appointments = ({ appointments, getAppointments }) => {
   useEffect(() => {

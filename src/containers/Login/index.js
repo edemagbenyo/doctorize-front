@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { loginUser } from '../../store/actions/auth';
-import '../Register/Register.scss';
-import Alert from '../../components/Alert/Alert';
+import '../Register/styles.scss';
+import Alert from '../../components/Alert';
 
 const Login = ({
   loginUser, isLoggedIn, isLoading, errMessage,

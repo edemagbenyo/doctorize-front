@@ -4,7 +4,7 @@ import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { registerDoctor } from '../../store/actions/auth';
 import { getSpecialities } from '../../store/actions/specialities';
-import '../Register/Register.scss';
+import '../Register/styles.scss';
 
 const RegisterDoctor = ({
   isLoggedIn,

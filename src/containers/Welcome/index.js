@@ -2,15 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Account from '../../components/Account/Account';
-import './Welcome.scss';
+import Account from '../../components/Account';
+import './styles.scss';
 import Doctor1 from '../../images/doctor1.png';
 
 const Welcome = ({ isLoggedIn }) => (
   <div className="welcome-container">
     <div className="navbar">
-      <div className="menu">Menu</div>
-      <div className="search">Search</div>
+      <div className="menu"></div>
+      <div className="search"></div>
       <div className="account">
         <Account isLoggedIn={isLoggedIn} />
       </div>
@@ -21,6 +21,10 @@ const Welcome = ({ isLoggedIn }) => (
         <Link to="/">Get Started</Link>
       </div>
       <div className="slide"><img src={Doctor1} alt="Doctor" /></div>
+    </div>
+
+    <div className="about">
+      <h2>KNow about us.</h2>
     </div>
 
   </div>

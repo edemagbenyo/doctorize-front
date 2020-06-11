@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getSpecialities } from '../../store/actions/specialities';
-import Loading from '../../components/Loading/Loading';
-import './Specialities.scss';
-import Speciality from '../../components/Speciality/Speciality';
+import Loading from '../../components/Loading';
+import './styles.scss';
+import Speciality from '../../components/Speciality';
 
 const Specialities = ({ specialities, getSpecialities, isLoading }) => {
   useEffect(() => {

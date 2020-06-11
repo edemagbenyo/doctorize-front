@@ -1,12 +1,12 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Welcome from '../containers/Welcome/Welcome';
-import Login from '../containers/Login/Login';
-import Register from '../containers/Register/Register';
-import Home from '../containers/Home/Home';
-import Doctors from '../containers/Doctors/Doctors';
-import Specialities from '../containers/Specialities/Specialities';
-import RegisterDoctor from '../containers/RegisterDoctor/RegisterDoctor';
+import Welcome from '../containers/Welcome';
+import Login from '../containers/Login';
+import Register from '../containers/Register';
+import Home from '../containers/Home';
+import Doctors from '../containers/Doctors';
+import Specialities from '../containers/Specialities';
+import RegisterDoctor from '../containers/RegisterDoctor';
 
 export default (
   <Switch>

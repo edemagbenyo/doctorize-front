@@ -4,15 +4,15 @@ import {
 } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Appointments from '../Appointments/Appointments';
+import Appointments from '../Appointments';
 import { logoutUser } from '../../store/actions/auth';
-import HealthInformation from '../../components/HealthInformation/HeathInformation';
-import './Home.scss';
+import HealthInformation from '../../components/HealthInformation';
+import './styles.scss';
 import {
   getHealthInformation,
   updateInformation,
 } from '../../store/actions/heathinfo';
-import BookAppointment from '../BookAppointment/BookAppointment';
+import BookAppointment from '../BookAppointment';
 
 const Home = ({
   isLoggedIn,

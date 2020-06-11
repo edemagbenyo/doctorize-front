@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { useParams, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { bookAppointment } from '../../store/actions/appointments';
-import './BookAppointment.scss';
+import './styles.scss';
 
 const BookAppointment = ({ bookAppointment, userid }) => {
   const [info, setInfo] = useState('');

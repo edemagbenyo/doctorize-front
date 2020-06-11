@@ -3,8 +3,8 @@ import { useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Routes from '../../router/index';
-import Navbar from '../../components/Navbar/Navbar';
-import './App.scss';
+import Navbar from '../../components/Navbar';
+import './styles.scss';
 import { getUser } from '../../store/actions/auth';
 
 function App({ getUser, user }) {
