@@ -7,14 +7,16 @@ import PropTypes from 'prop-types';
 import { bookAppointment } from '../../store/actions/appointments';
 import './styles.scss';
 
-const BookAppointment = ({ bookAppointment, userid, isLoading, isDone }) => {
+const BookAppointment = ({
+  bookAppointment, userid, isLoading, isDone,
+}) => {
   const [info, setInfo] = useState('');
   const [link] = useState('https://microverse.zoom.us/j/3749659607');
   const [guest, setGuest] = useState('n/a');
   const [date, setDate] = useState(new Date());
   const { doctorid } = useParams();
   const { state } = useLocation();
-  if (isDone) return <Redirect to='/home/appointments' />
+  if (isDone) return <Redirect to="/home/appointments" />;
   return (
     <div className="book-container">
       <h3>
@@ -39,7 +41,7 @@ const BookAppointment = ({ bookAppointment, userid, isLoading, isDone }) => {
             id="info"
             value={info}
             onChange={e => setInfo(e.target.value)}
-            required={true}
+            required
           />
         </div>
         <div>
@@ -56,7 +58,7 @@ const BookAppointment = ({ bookAppointment, userid, isLoading, isDone }) => {
         </div>
         <div>
           <div> </div>
-          <button type="submit" readOnly >{isLoading ? 'Loading...':'Book Appointment'}</button>
+          <button type="submit" readOnly>{isLoading ? 'Loading...' : 'Book Appointment'}</button>
         </div>
       </form>
     </div>
@@ -67,7 +69,7 @@ BookAppointment.defaultProps = {
   bookAppointment: () => undefined,
   userid: null,
   isLoading: false,
-  isDone: false
+  isDone: false,
 };
 BookAppointment.propTypes = {
   bookAppointment: PropTypes.func,

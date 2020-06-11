@@ -10,7 +10,7 @@ const Welcome = ({ isLoggedIn }) => (
   <div className="welcome-container">
     <div className="navbar">
       <div className="menu"><h3>!Doctorize</h3></div>
-      <div className="search"></div>
+      <div className="search" />
       <div className="account">
         <Account isLoggedIn={isLoggedIn} />
       </div>

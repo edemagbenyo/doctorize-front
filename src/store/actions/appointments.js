@@ -7,9 +7,9 @@ import { BOOK_APPOINTMENT, GET_APPOINTMENTS, LOADING_APPOINTMENTS } from '../act
 export const bookAppointment = data => dispatch => {
   const token = Cookies.get('auth_token');
 
-  //Loading booking...
+  // Loading booking...
   dispatch({
-    type:LOADING_APPOINTMENTS
+    type: LOADING_APPOINTMENTS,
   });
   const momentDate = moment(data.date);
   axios

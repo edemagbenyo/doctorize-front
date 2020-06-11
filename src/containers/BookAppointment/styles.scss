@@ -39,6 +39,12 @@
       font-size: 1em;
       display: block;
       cursor: pointer;
+      transition: all .3s ease-out;
+      border:2px solid $blue;
+    }
+    button[type="submit"]:hover{
+      background-color: $white;
+      color:$blue;
     }
   }
 }
