@@ -148,9 +148,9 @@ const maptStateToProps = state => ({
   isLoading: state.auth.isLoading,
   specialities: state.specialities.specialities,
 });
-const mapDipatchToProps ={
-  registerDoctor: registerDoctor,
-  getSpecialities:getSpecialities
-}
+const mapDipatchToProps = {
+  registerDoctor,
+  getSpecialities,
+};
 
 export default connect(maptStateToProps, mapDipatchToProps)(RegisterDoctor);

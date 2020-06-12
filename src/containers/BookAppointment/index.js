@@ -1,16 +1,18 @@
-import React, { useState } from "react";
-import DateTimePicker from "react-datetime-picker";
-import "react-calendar/dist/Calendar.css";
-import { connect } from "react-redux";
-import { useParams, useLocation, Redirect } from "react-router-dom";
-import PropTypes from "prop-types";
-import { bookAppointment } from "../../store/actions/appointments";
-import "./styles.scss";
+import React, { useState } from 'react';
+import DateTimePicker from 'react-datetime-picker';
+import 'react-calendar/dist/Calendar.css';
+import { connect } from 'react-redux';
+import { useParams, useLocation, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { bookAppointment } from '../../store/actions/appointments';
+import './styles.scss';
 
-const BookAppointment = ({ bookAppointment, userid, isLoading, isDone }) => {
-  const [info, setInfo] = useState("");
-  const [link] = useState("https://microverse.zoom.us/j/3749659607");
-  const [guest, setGuest] = useState("n/a");
+const BookAppointment = ({
+  bookAppointment, userid, isLoading, isDone,
+}) => {
+  const [info, setInfo] = useState('');
+  const [link] = useState('https://microverse.zoom.us/j/3749659607');
+  const [guest, setGuest] = useState('n/a');
   const [date, setDate] = useState(new Date());
   const { doctorid } = useParams();
   const { state } = useLocation();
@@ -22,7 +24,7 @@ const BookAppointment = ({ bookAppointment, userid, isLoading, isDone }) => {
         {state.name}
       </h3>
       <form
-        onSubmit={(e) => {
+        onSubmit={e => {
           e.preventDefault();
           bookAppointment({
             info,
@@ -39,7 +41,7 @@ const BookAppointment = ({ bookAppointment, userid, isLoading, isDone }) => {
           <textarea
             id="info"
             value={info}
-            onChange={(e) => setInfo(e.target.value)}
+            onChange={e => setInfo(e.target.value)}
             required
           />
         </div>
@@ -52,7 +54,7 @@ const BookAppointment = ({ bookAppointment, userid, isLoading, isDone }) => {
           <input
             id="guest"
             value={guest}
-            onChange={(e) => setGuest(e.target.value)}
+            onChange={e => setGuest(e.target.value)}
           />
         </div>
         <div>
@@ -62,7 +64,7 @@ const BookAppointment = ({ bookAppointment, userid, isLoading, isDone }) => {
         <div>
           <div> </div>
           <button type="submit" readOnly>
-            {isLoading ? "Loading..." : "Book Appointment"}
+            {isLoading ? 'Loading...' : 'Book Appointment'}
           </button>
         </div>
       </form>
@@ -84,10 +86,10 @@ BookAppointment.propTypes = {
 };
 
 const mapDispatchToProps = {
-  bookAppointment: bookAppointment,
+  bookAppointment,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   userid: state.auth.user.id,
   isLoading: state.appointments.isLoading,
   isDone: state.appointments.isDone,

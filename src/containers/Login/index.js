@@ -75,6 +75,6 @@ const maptStateToProps = state => ({
   isLoading: state.auth.isLoading,
   errMessage: state.auth.errMessage,
 });
-const mapDipatchToProps = {loginUser: loginUser}
+const mapDipatchToProps = { loginUser };
 
 export default connect(maptStateToProps, mapDipatchToProps)(Login);

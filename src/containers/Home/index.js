@@ -110,9 +110,9 @@ Home.propTypes = {
 };
 
 const mapDispatchToProps = {
-  logoutUser: logoutUser,
-  getHealthInformation: getHealthInformation,
-  updateInformation:updateInformation,
+  logoutUser,
+  getHealthInformation,
+  updateInformation,
 };
 
 const mapStateToProps = state => ({
