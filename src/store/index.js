@@ -1,5 +1,14 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import combinedReducers from './reducers';
+import { loadState, saveState } from '../lib/localStorage';
 
-export default createStore(combinedReducers, applyMiddleware(thunk));
+
+const persistedState = loadState()
+const store =  createStore(combinedReducers, persistedState, applyMiddleware(thunk));
+
+store.subscribe(()=>{
+  saveState(store.getState())
+  console.log(store.getState());
+})
+export default store;

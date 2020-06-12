@@ -64,7 +64,5 @@ const mapStateToProps = state => ({
   appointments: state.appointments.appointments,
   user_type: state.auth.user_type,
 });
-const mapDispatchToProps = dispatch => ({
-  getAppointments: () => dispatch(getAppointments()),
-});
+const mapDispatchToProps = {getAppointments:getAppointments}
 export default connect(mapStateToProps, mapDispatchToProps)(Appointments);

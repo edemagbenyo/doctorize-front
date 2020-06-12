@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import Routes from '../../router/index';
-import Navbar from '../../components/Navbar';
-import './styles.scss';
-import { getUser } from '../../store/actions/auth';
+import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import Routes from "../../router/index";
+import Navbar from "../../components/Navbar";
+import "./styles.scss";
+import { getUser } from "../../store/actions/auth";
 
 function App({ getUser, user }) {
   const { pathname } = useLocation();
@@ -15,13 +15,13 @@ function App({ getUser, user }) {
   return (
     <div className="main-container">
       <div
-        className={pathname === '/' ? '' : 'main-navbar'}
-        style={pathname === '/' ? { display: 'none' } : { display: '' }}
+        className={pathname === "/" ? "" : "main-navbar"}
+        style={pathname === "/" ? { display: "none" } : { display: "" }}
       >
         <Navbar user={user} />
       </div>
       <div
-        style={pathname === '/' ? { width: '100%' } : { width: '' }}
+        style={pathname === "/" ? { width: "100%" } : { width: "" }}
         className="main-content"
       >
         {Routes}
@@ -41,8 +41,8 @@ App.propTypes = {
   }),
 };
 
-const mapDispatchTopProps = dispatch => ({ getUser: () => dispatch(getUser()) });
-const mapStateToProps = state => ({
+const mapDispatchTopProps = { getUser: getUser };
+const mapStateToProps = (state) => ({
   user: state.auth.user,
 });
 

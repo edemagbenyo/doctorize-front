@@ -1,17 +1,21 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { useParams } from "react-router-dom";
+import PropTypes from "prop-types";
 import {
   getDoctors,
   getDoctorsBySpeciality,
-} from '../../store/actions/doctors';
-import './styles.scss';
-import Doctor from '../../components/Doctor';
-import Loading from '../../components/Loading';
+} from "../../store/actions/doctors";
+import "./styles.scss";
+import Doctor from "../../components/Doctor";
+import Loading from "../../components/Loading";
 
 const Doctors = ({
-  doctors, getDoctors, isLoading, getDoctorsBySpeciality, speciality,
+  doctors,
+  getDoctors,
+  isLoading,
+  getDoctorsBySpeciality,
+  speciality,
 }) => {
   const { id } = useParams();
 
@@ -27,16 +31,12 @@ const Doctors = ({
   return (
     <div>
       <h1>Doctors</h1>
-      {speciality && (<h2>{speciality.name}</h2>)}
+      {speciality && <h2>{speciality.name}</h2>}
       <span className="info">Select any doctor to book an appointment</span>
       {doctors && doctors.length > 0 ? (
         <ul className="doctors">
-          {doctors.map(doctor => (
-            <Doctor
-              key={doctor.id}
-              doctor={doctor}
-
-            />
+          {doctors.map((doctor) => (
+            <Doctor key={doctor.id} doctor={doctor} />
           ))}
         </ul>
       ) : (
@@ -57,7 +57,7 @@ Doctors.propTypes = {
   doctors: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,
-    }),
+    })
   ),
   getDoctors: PropTypes.func,
   isLoading: PropTypes.bool,
@@ -66,16 +66,16 @@ Doctors.propTypes = {
     name: PropTypes.string,
   }),
 };
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   doctors: state.doctors.doctors,
   isLoading: state.doctors.isLoading,
   speciality: state.doctors.speciality,
   isLoggedIn: state.auth.isLoggedIn,
 });
 
-const mapDispatchToProps = dispatch => ({
-  getDoctors: () => dispatch(getDoctors()),
-  getDoctorsBySpeciality: specialityId => dispatch(getDoctorsBySpeciality(specialityId)),
-});
+const mapDispatchToProps = {
+  getDoctors: getDoctors,
+  getDoctorsBySpeciality: getDoctorsBySpeciality,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Doctors);

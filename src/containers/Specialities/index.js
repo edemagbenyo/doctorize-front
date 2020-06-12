@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { getSpecialities } from '../../store/actions/specialities';
-import Loading from '../../components/Loading';
-import './styles.scss';
-import Speciality from '../../components/Speciality';
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { getSpecialities } from "../../store/actions/specialities";
+import Loading from "../../components/Loading";
+import "./styles.scss";
+import Speciality from "../../components/Speciality";
 
 const Specialities = ({ specialities, getSpecialities, isLoading }) => {
   useEffect(() => {
@@ -17,7 +17,7 @@ const Specialities = ({ specialities, getSpecialities, isLoading }) => {
       <span className="info">Select any speciality to get doctors</span>
       {specialities && specialities.length > 0 ? (
         <ul className="specialities">
-          {specialities.map(speciality => (
+          {specialities.map((speciality) => (
             <Speciality key={speciality.id} speciality={speciality} />
           ))}
         </ul>
@@ -37,20 +37,20 @@ Specialities.propTypes = {
   specialities: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,
-    }),
+    })
   ),
   getSpecialities: PropTypes.func,
   isLoading: PropTypes.bool,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   specialities: state.specialities.specialities,
   isLoading: state.specialities.isLoading,
   isLoggedIn: state.auth.isLoggedIn,
 });
 
-const mapDispatchToProps = dispatch => ({
-  getSpecialities: () => dispatch(getSpecialities()),
-});
+const mapDispatchToProps = {
+  getSpecialities: getSpecialities,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Specialities);

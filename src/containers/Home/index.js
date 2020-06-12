@@ -109,11 +109,11 @@ Home.propTypes = {
   isLoading: PropTypes.bool,
 };
 
-const mapDispatchToProps = dispatch => ({
-  logoutUser: () => dispatch(logoutUser()),
-  getHealthInformation: () => dispatch(getHealthInformation()),
-  updateInformation: data => dispatch(updateInformation(data)),
-});
+const mapDispatchToProps = {
+  logoutUser: logoutUser,
+  getHealthInformation: getHealthInformation,
+  updateInformation:updateInformation,
+};
 
 const mapStateToProps = state => ({
   isLoggedIn: state.auth.isLoggedIn,

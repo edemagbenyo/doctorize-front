@@ -14,6 +14,7 @@ export const getDoctorsBySpeciality = specialityId => dispatch => {
     type: LOADING_DOCTORS,
   });
 
+  // const doctors = loadState() ? JSON.parse(loadState())
   axios
     .get(`${url}/specialities/${specialityId}`, {
       headers: { Authorization: token },

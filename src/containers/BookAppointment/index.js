@@ -1,18 +1,16 @@
-import React, { useState } from 'react';
-import DateTimePicker from 'react-datetime-picker';
-import 'react-calendar/dist/Calendar.css';
-import { connect } from 'react-redux';
-import { useParams, useLocation, Redirect } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { bookAppointment } from '../../store/actions/appointments';
-import './styles.scss';
+import React, { useState } from "react";
+import DateTimePicker from "react-datetime-picker";
+import "react-calendar/dist/Calendar.css";
+import { connect } from "react-redux";
+import { useParams, useLocation, Redirect } from "react-router-dom";
+import PropTypes from "prop-types";
+import { bookAppointment } from "../../store/actions/appointments";
+import "./styles.scss";
 
-const BookAppointment = ({
-  bookAppointment, userid, isLoading, isDone,
-}) => {
-  const [info, setInfo] = useState('');
-  const [link] = useState('https://microverse.zoom.us/j/3749659607');
-  const [guest, setGuest] = useState('n/a');
+const BookAppointment = ({ bookAppointment, userid, isLoading, isDone }) => {
+  const [info, setInfo] = useState("");
+  const [link] = useState("https://microverse.zoom.us/j/3749659607");
+  const [guest, setGuest] = useState("n/a");
   const [date, setDate] = useState(new Date());
   const { doctorid } = useParams();
   const { state } = useLocation();
@@ -23,24 +21,25 @@ const BookAppointment = ({
         Book an appointment with Dr.
         {state.name}
       </h3>
-      <form onSubmit={e => {
-        e.preventDefault();
-        bookAppointment({
-          info,
-          meeting_link: link,
-          guest,
-          date,
-          doctor_id: doctorid,
-          user_id: userid,
-        });
-      }}
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          bookAppointment({
+            info,
+            meeting_link: link,
+            guest,
+            date,
+            doctor_id: doctorid,
+            user_id: userid,
+          });
+        }}
       >
         <div>
           <label htmlFor="info">Meeting information</label>
           <textarea
             id="info"
             value={info}
-            onChange={e => setInfo(e.target.value)}
+            onChange={(e) => setInfo(e.target.value)}
             required
           />
         </div>
@@ -50,7 +49,11 @@ const BookAppointment = ({
         </div>
         <div>
           <label htmlFor="guest">Guest</label>
-          <input id="guest" value={guest} onChange={e => setGuest(e.target.value)} />
+          <input
+            id="guest"
+            value={guest}
+            onChange={(e) => setGuest(e.target.value)}
+          />
         </div>
         <div>
           <label htmlFor="date">Date</label>
@@ -58,7 +61,9 @@ const BookAppointment = ({
         </div>
         <div>
           <div> </div>
-          <button type="submit" readOnly>{isLoading ? 'Loading...' : 'Book Appointment'}</button>
+          <button type="submit" readOnly>
+            {isLoading ? "Loading..." : "Book Appointment"}
+          </button>
         </div>
       </form>
     </div>
@@ -78,11 +83,11 @@ BookAppointment.propTypes = {
   isDone: PropTypes.bool,
 };
 
-const mapDispatchToProps = dispatch => ({
-  bookAppointment: data => dispatch(bookAppointment(data)),
+const mapDispatchToProps = {
+  bookAppointment: bookAppointment,
+};
 
-});
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   userid: state.auth.user.id,
   isLoading: state.appointments.isLoading,
   isDone: state.appointments.isDone,
