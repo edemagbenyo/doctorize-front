@@ -13,6 +13,7 @@ import {
   updateInformation,
 } from '../../store/actions/heathinfo';
 import BookAppointment from '../BookAppointment';
+import FlashMessages from '../FlashMessages';
 
 const Home = ({
   isLoggedIn,
@@ -61,6 +62,7 @@ const Home = ({
               </ul>
             </div>
           </div>
+          <FlashMessages/>
           <Switch>
             <Route path={`${path}/appointments`}>
               <Appointments />

@@ -1,8 +1,8 @@
-import Cookies from 'js-cookie';
 
 export function loadState() {
   try {
-    const state = Cookies.get('state');
+    const state = localStorage.getItem('state'); 
+    if (!state) return undefined;
     const persistedState = JSON.parse(state);
     return persistedState;
   } catch (error) {
@@ -13,7 +13,7 @@ export function loadState() {
 export function saveState(state) {
   try {
     const stringfiedState = JSON.stringify(state);
-    Cookies.set('state', stringfiedState);
+    localStorage.setItem('state', stringfiedState);
   } catch (error) {
     // TODO : log error later
   }

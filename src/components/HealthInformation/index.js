@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Alert from '../Alert';
 import './styles.scss';
 
 const HealthInformation = ({
@@ -25,7 +24,6 @@ const HealthInformation = ({
   return (
     <div className="health-container">
       <h2 style={{ textAlign: 'center' }}>Health information</h2>
-      <Alert classname="info" message={flash} />
       <form
         onSubmit={e => {
           e.preventDefault();

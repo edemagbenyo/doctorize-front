@@ -33,7 +33,7 @@ const Appointments = ({ appointments, getAppointments }) => {
               </tr>
             ))
           ) : (
-            <tr>No Appointment!!!</tr>
+            <tr><td colSpan="3">No Appointment!!!</td></tr>
           )}
         </tbody>
       </table>

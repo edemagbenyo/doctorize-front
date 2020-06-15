@@ -7,6 +7,7 @@ import {
 } from '../actionTypes';
 import { url } from '../../config';
 import { logoutUser, serverDown } from './auth';
+import { addFlashMessage } from './flashMessages';
 
 export const getHealthInformation = () => dispatch => {
   const token = Cookies.get('auth_token');
@@ -52,10 +53,13 @@ export const updateInformation = data => dispatch => {
         },
         { headers: { Authorization: token } },
       )
-      .then(data => {
+      .then(_ => {
+        addFlashMessage({
+          type:'success',
+          text:'Health information update!'
+        })
         dispatch({
           type: UPDATE_HEALTHINFO,
-          flash: 'Health information has been saved!',
         });
       })
       .catch(err => err);
@@ -74,10 +78,13 @@ export const updateInformation = data => dispatch => {
         },
         { headers: { Authorization: token } },
       )
-      .then(data => {
+      .then(_ => {
+        dispatch(addFlashMessage({
+          type:'success',
+          text:'Health information update!'
+        }))
         dispatch({
           type: UPDATE_HEALTHINFO,
-          flash: 'Health information has been updated!',
         });
       })
       .catch(err => {

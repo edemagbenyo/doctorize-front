@@ -4,7 +4,6 @@ import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { loginUser } from '../../store/actions/auth';
 import '../Register/styles.scss';
-import Alert from '../../components/Alert';
 
 const Login = ({
   loginUser, isLoggedIn, isLoading, errMessage,
@@ -23,7 +22,6 @@ const Login = ({
         }}
       >
         <h1>Log in account</h1>
-        <Alert classname="error" message={errMessage} />
         <label htmlFor="username">
           <input
             id="username"
