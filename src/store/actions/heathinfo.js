@@ -55,9 +55,9 @@ export const updateInformation = data => dispatch => {
       )
       .then(_ => {
         dispatch(addFlashMessage({
-          type:'success',
-          text:'Health information updated!'
-        }))
+          type: 'success',
+          text: 'Health information updated!',
+        }));
         dispatch({
           type: UPDATE_HEALTHINFO,
         });
@@ -80,9 +80,9 @@ export const updateInformation = data => dispatch => {
       )
       .then(_ => {
         dispatch(addFlashMessage({
-          type:'success',
-          text:'Health information updated!'
-        }))
+          type: 'success',
+          text: 'Health information updated!',
+        }));
         dispatch({
           type: UPDATE_HEALTHINFO,
         });

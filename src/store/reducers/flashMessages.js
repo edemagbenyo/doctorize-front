@@ -1,18 +1,27 @@
-import { ADD_FLASH_MESSAGE, REMOVE_FLASH_MESSAGE } from "../actionTypes";
-import shortid from 'shortid'
+import shortid from 'shortid';
 
-import findIndex from 'lodash/findIndex'
-export default (state=[],action)=>{
+import findIndex from 'lodash/findIndex';
+import { ADD_FLASH_MESSAGE, REMOVE_FLASH_MESSAGE } from '../actionTypes';
+
+export default (state = [], action) => {
   switch (action.type) {
     case ADD_FLASH_MESSAGE:
-      return [...state, { id: shortid.generate(), type:action.message.type, text: action.message.text} ]  
-    case REMOVE_FLASH_MESSAGE:
-      const index = findIndex(state, {id:action.id})
-      if(index>=0){
-        return [...state.slice(0,index), ...state.slice(index+1)]
+      return [
+        ...state,
+        {
+          id: shortid.generate(),
+          type: action.message.type,
+          text: action.message.text,
+        },
+      ];
+    case REMOVE_FLASH_MESSAGE: {
+      const index = findIndex(state, { id: action.id });
+      if (index >= 0) {
+        return [...state.slice(0, index), ...state.slice(index + 1)];
       }
-      return state
+      return state;
+    }
     default:
       return state;
   }
-}
+};

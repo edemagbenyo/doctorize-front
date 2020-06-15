@@ -21,9 +21,9 @@ export const bookAppointment = data => dispatch => {
     )
     .then(({ data }) => {
       dispatch(addFlashMessage({
-        type:'success',
-        text:'Appointment booked successfully!'
-      }))
+        type: 'success',
+        text: 'Appointment booked successfully!',
+      }));
       dispatch({
         type: BOOK_APPOINTMENT,
       });

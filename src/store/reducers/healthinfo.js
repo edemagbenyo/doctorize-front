@@ -9,7 +9,7 @@ export default (state = { healthinfo: {}, isLoading: false, flash: null }, actio
     case GET_HEALTHINFO:
       return { ...state, healthinfo: action.healthinfo, isLoading: false };
     case UPDATE_HEALTHINFO:
-      return { ...state, isLoading: false};
+      return { ...state, isLoading: false };
     case LOADING_HEALTHINFO:
       return { ...state, isLoading: true };
     default:

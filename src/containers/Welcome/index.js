@@ -25,7 +25,7 @@ const Welcome = ({ isLoggedIn }) => (
       </div>
     </div>
 
-    <div></div>
+    <div />
 
   </div>
 );

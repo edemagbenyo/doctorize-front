@@ -1,7 +1,7 @@
 
 export function loadState() {
   try {
-    const state = localStorage.getItem('state'); 
+    const state = localStorage.getItem('state');
     if (!state) return undefined;
     const persistedState = JSON.parse(state);
     return persistedState;

@@ -62,7 +62,7 @@ const Home = ({
               </ul>
             </div>
           </div>
-          <FlashMessages/>
+          <FlashMessages />
           <Switch>
             <Route path={`${path}/appointments`}>
               <Appointments />

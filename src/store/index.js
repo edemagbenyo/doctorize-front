@@ -8,7 +8,7 @@ const persistedState = loadState();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 /* eslint-disable no-underscore-dangle */
 const store = createStore(combinedReducers, persistedState, composeEnhancers(
-  applyMiddleware(thunk)
+  applyMiddleware(thunk),
 ));
 /* eslint-enable */
 

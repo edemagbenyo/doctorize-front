@@ -4,8 +4,8 @@ import appointments from './appointments';
 import doctors from './doctors';
 import specialities from './specialities';
 import healthinfo from './healthinfo';
-import flashMessages from './flashMessages'
+import flashMessages from './flashMessages';
 
 export default combineReducers({
-  auth, appointments, doctors, specialities, healthinfo,flashMessages
+  auth, appointments, doctors, specialities, healthinfo, flashMessages,
 });
