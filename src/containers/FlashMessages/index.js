@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './styles.scss';
 import { connect } from 'react-redux';
 import FlashMessage from '../../components/FlashMessage';
 import { removeFlashMessage } from '../../store/actions/flashMessages';
+import './styles.scss';
 
 const FlashMessages = ({ messages, removeFlashMessage }) => messages
   && messages.map(message => (

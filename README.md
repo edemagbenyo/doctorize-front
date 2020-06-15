@@ -9,7 +9,8 @@
 
 Full-stack doctors and specialists appointment platform. This is the front-end repo of the application. It has been built using React and makes use of Redux for state management.
 
-[Live version](https://doctorize.herokuapp.com/)
+Live version is available [here](https://doctorize.herokuapp.com/) .
+
 To report a bug or request a feature use this [link](https://github.com/edemagbenyo/doctorize-api/issues)
 
 ![Screenshot of the webpage](https://github.com/edemagbenyo/doctorize-front/blob/implement-frontend/screenshots/overview.png)
@@ -44,7 +45,7 @@ cd doctorize
 ### `yarn install`
 Install all the dependencies.
 
-### `yart start`
+### `yarn start`
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
