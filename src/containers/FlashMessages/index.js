@@ -3,10 +3,11 @@ import PropTypes from "prop-types";
 import "./styles.scss";
 import { connect } from "react-redux";
 import FlashMessage from "../../components/FlashMessage";
+import { removeFlashMessage } from "../../store/actions/flashMessages";
 
-const FlashMessages = ({messages}) =>
+const FlashMessages = ({messages, removeFlashMessage}) =>
   messages && 
-    messages.map(message=><FlashMessage key={message.id} message={message}/>)
+    messages.map(message=><FlashMessage key={message.id} message={message} onRemoveFlash={removeFlashMessage}/>)
   ;
 FlashMessages.defaultProps = {
   messages: "",
@@ -20,4 +21,4 @@ const mapStateToProps = (state) => {
     messages: state.flashMessages,
   };
 };
-export default connect(mapStateToProps, null)(FlashMessages);
+export default connect(mapStateToProps, {removeFlashMessage: removeFlashMessage})(FlashMessages);

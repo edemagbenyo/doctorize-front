@@ -1,11 +1,10 @@
 import { ADD_FLASH_MESSAGE, REMOVE_FLASH_MESSAGE } from "../actionTypes";
 
-export const addFlashMessage = (message) => (dispatch) => {
-  console.log("show me message")
-  dispatch({
+export const addFlashMessage = (message) =>{
+  return {
     type: ADD_FLASH_MESSAGE,
     message,
-  });
+  };
 };
 export const removeFlashMessage = (id) => {
   return {

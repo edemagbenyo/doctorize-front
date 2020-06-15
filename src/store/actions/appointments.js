@@ -3,6 +3,7 @@ import moment from 'moment';
 import Cookies from 'js-cookie';
 import { url } from '../../config';
 import { BOOK_APPOINTMENT, GET_APPOINTMENTS, LOADING_APPOINTMENTS } from '../actionTypes';
+import { addFlashMessage } from './flashMessages';
 
 export const bookAppointment = data => dispatch => {
   const token = Cookies.get('auth_token');
@@ -19,6 +20,10 @@ export const bookAppointment = data => dispatch => {
       { headers: { Authorization: token } },
     )
     .then(({ data }) => {
+      dispatch(addFlashMessage({
+        type:'success',
+        text:'Appointment booked successfully!'
+      }))
       dispatch({
         type: BOOK_APPOINTMENT,
       });

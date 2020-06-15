@@ -54,10 +54,10 @@ export const updateInformation = data => dispatch => {
         { headers: { Authorization: token } },
       )
       .then(_ => {
-        addFlashMessage({
+        dispatch(addFlashMessage({
           type:'success',
-          text:'Health information update!'
-        })
+          text:'Health information updated!'
+        }))
         dispatch({
           type: UPDATE_HEALTHINFO,
         });
@@ -81,7 +81,7 @@ export const updateInformation = data => dispatch => {
       .then(_ => {
         dispatch(addFlashMessage({
           type:'success',
-          text:'Health information update!'
+          text:'Health information updated!'
         }))
         dispatch({
           type: UPDATE_HEALTHINFO,
