@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { registerUser } from '../../store/actions/auth';
+import FlashMessages from '../FlashMessages';
+
 import './styles.scss';
 
 const Register = ({ isLoggedIn, registerUser, isLoading }) => {
@@ -26,6 +28,7 @@ const Register = ({ isLoggedIn, registerUser, isLoading }) => {
           });
         }}
       >
+        <FlashMessages />
         <h1>Create an account</h1>
         <label htmlFor="name">
           <input
@@ -34,6 +37,7 @@ const Register = ({ isLoggedIn, registerUser, isLoading }) => {
             onChange={e => setName(e.target.value)}
             value={name}
             placeholder="Name"
+            required
           />
         </label>
         <label htmlFor="email">
@@ -43,6 +47,7 @@ const Register = ({ isLoggedIn, registerUser, isLoading }) => {
             onChange={e => setEmail(e.target.value)}
             value={email}
             placeholder="Email"
+            required
           />
         </label>
         <label htmlFor="username">
@@ -52,6 +57,7 @@ const Register = ({ isLoggedIn, registerUser, isLoading }) => {
             onChange={e => setUsername(e.target.value)}
             value={username}
             placeholder="Username"
+            required
           />
         </label>
         <label htmlFor="password">
@@ -61,6 +67,7 @@ const Register = ({ isLoggedIn, registerUser, isLoading }) => {
             onChange={e => setPassword(e.target.value)}
             value={password}
             placeholder="password"
+            required
           />
         </label>
         <button type="submit">{isLoading ? 'Loading...' : 'Register'}</button>

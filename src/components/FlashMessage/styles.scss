@@ -2,13 +2,18 @@
   position: relative;
   padding: 10px;
   color: #ffffff;
+  display: block;
+  width: 80%;
+  margin:0 auto;
   button{
-    margin: 0;
-    background: none;
-    border: none;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: none !important;
+    border: none !important;
     position: absolute;
-    right: 0;
-    top: 0;
+    right: 5px;
+    top: 25% ;
+    font-size: 1em !important;
     span.close {
       color: #ffffff;
       padding: 0;

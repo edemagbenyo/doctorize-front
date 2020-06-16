@@ -4,6 +4,8 @@ import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { registerDoctor } from '../../store/actions/auth';
 import { getSpecialities } from '../../store/actions/specialities';
+import FlashMessages from '../FlashMessages';
+
 import '../Register/styles.scss';
 
 const RegisterDoctor = ({
@@ -28,6 +30,7 @@ const RegisterDoctor = ({
           registerDoctor(form);
         }}
       >
+        <FlashMessages />
         <h1>Create an account</h1>
         <h2>Personal Information</h2>
         <label htmlFor="name">
@@ -37,6 +40,7 @@ const RegisterDoctor = ({
             onChange={e => setForm({ ...form, name: e.target.value })}
             value={form.name}
             placeholder="Name"
+            required
           />
         </label>
         <label htmlFor="email">
@@ -46,6 +50,7 @@ const RegisterDoctor = ({
             onChange={e => setForm({ ...form, email: e.target.value })}
             value={form.email}
             placeholder="Email"
+            required
           />
         </label>
         <h2>Professional Information</h2>
@@ -56,6 +61,7 @@ const RegisterDoctor = ({
             onChange={e => setForm({ ...form, experience_year: e.target.value })}
             value={form.experience_year}
             placeholder="Experience year"
+            required
           />
         </label>
         <label htmlFor="hospital">
@@ -65,11 +71,13 @@ const RegisterDoctor = ({
             onChange={e => setForm({ ...form, hospital: e.target.value })}
             value={form.hospital}
             placeholder="Hospital"
+            required
           />
         </label>
         <label htmlFor="speciality">
           <select
             onChange={e => setForm({ ...form, speciality: e.target.value })}
+            required
           >
             <option value="">Select speciality</option>
             {specialities && specialities.length > 0 ? (
@@ -90,6 +98,7 @@ const RegisterDoctor = ({
             onChange={e => setForm({ ...form, city: e.target.value })}
             value={form.city}
             placeholder="City"
+            required
           />
         </label>
 
@@ -101,6 +110,7 @@ const RegisterDoctor = ({
             onChange={e => setForm({ ...form, username: e.target.value })}
             value={form.username}
             placeholder="Username"
+            required
           />
         </label>
         <label htmlFor="password">
@@ -110,6 +120,7 @@ const RegisterDoctor = ({
             onChange={e => setForm({ ...form, password: e.target.value })}
             value={form.password}
             placeholder="password"
+            required
           />
         </label>
         <button type="submit">{isLoading ? 'Loading...' : 'Register'}</button>

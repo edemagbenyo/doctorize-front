@@ -13,6 +13,7 @@ import {
   REGISTER_FAILURE,
 } from '../actionTypes';
 import { url } from '../../config';
+import { addFlashMessage } from './flashMessages';
 
 export const loginUser = ({ username, password }) => dispatch => {
   dispatch({
@@ -26,6 +27,12 @@ export const loginUser = ({ username, password }) => dispatch => {
 
       if (data.data) {
         saveInCookies(data.data);
+        dispatch(
+          addFlashMessage({
+            type: 'success',
+            text: 'You have successfully logged in!',
+          }),
+        );
         dispatch({
           type: LOGIN_SUCCESS,
           user: data.data.user,
@@ -35,9 +42,14 @@ export const loginUser = ({ username, password }) => dispatch => {
       }
     })
     .catch(error => {
+      dispatch(
+        addFlashMessage({
+          type: 'error',
+          text: error.response.data.message,
+        }),
+      );
       dispatch({
         type: LOGIN_FAILURE,
-        message: error.response.data.message,
       });
     });
 };
@@ -50,7 +62,10 @@ export const registerUser = ({
 
   axios
     .post(`${url}/signup`, {
-      name, email, username, password,
+      name,
+      email,
+      username,
+      password,
     })
     .then(data => {
       // Set the token in secure cookie.
@@ -58,12 +73,24 @@ export const registerUser = ({
       Cookies.set('isLoggedIn', true);
       Cookies.set('user', JSON.stringify(data.data.user));
 
+      dispatch(
+        addFlashMessage({
+          type: 'success',
+          text: 'You have successfully registered!',
+        }),
+      );
       dispatch({
         type: REGISTER_SUCCESS,
         user: data.data.user,
       });
     })
     .catch(error => {
+      dispatch(
+        addFlashMessage({
+          type: 'error',
+          text: error.response.data.message,
+        }),
+      );
       dispatch({
         type: REGISTER_FAILURE,
         message: error.response.data.message,
@@ -80,7 +107,12 @@ export const registerDoctor = data => dispatch => {
     .then(data => {
       // Set the token in secure cookie.
       saveInCookies(data.data);
-
+      dispatch(
+        addFlashMessage({
+          type: 'success',
+          text: 'You have successfully registered!',
+        }),
+      );
       dispatch({
         type: REGISTER_SUCCESS,
         user: data.data.user,
@@ -89,6 +121,12 @@ export const registerDoctor = data => dispatch => {
       });
     })
     .catch(error => {
+      dispatch(
+        addFlashMessage({
+          type: 'error',
+          text: error.response.data.message,
+        }),
+      );
       dispatch({
         type: REGISTER_FAILURE,
         message: error.response.data.message,
@@ -96,17 +134,23 @@ export const registerDoctor = data => dispatch => {
     });
 };
 
-export const logoutUser = (message = 'You have been logged out!') => {
+export const logoutUser = (message = 'You have been logged out!') => dispatch => {
   // remove user from cookie
 
   Cookies.remove('auth_token');
   Cookies.remove('user');
   Cookies.remove('isLoggedIn');
   Cookies.remove('userType');
-  return {
+  dispatch(
+    addFlashMessage({
+      type: 'success',
+      text: 'You have successfully logged out!',
+    }),
+  );
+  dispatch({
     type: LOGOUT,
     message,
-  };
+  });
 };
 export const getUser = () => {
   // Get the rocookie if any

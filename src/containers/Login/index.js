@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { loginUser } from '../../store/actions/auth';
+import FlashMessages from '../FlashMessages';
 import '../Register/styles.scss';
 
 const Login = ({
@@ -22,6 +23,7 @@ const Login = ({
         }}
       >
         <h1>Log in account</h1>
+        <FlashMessages />
         <label htmlFor="username">
           <input
             id="username"

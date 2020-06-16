@@ -33,7 +33,7 @@ export default (
       };
     case ActionType.LOGIN_FAILURE:
       return {
-        ...state, isLoading: false, isServerDown: false, errMessage: action.message,
+        ...state, isServerDown: false, isLoading: false,
       };
     case ActionType.LOGIN_SUCCESS:
       return {
