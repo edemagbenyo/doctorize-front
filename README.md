@@ -1,11 +1,51 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Doctor appointments(Doctorize)
 
-## Available Scripts
+<!--- These are examples. See https://shields.io for others or to customize this set of shields. You might want to include dependencies, project status and licence info here --->
+![GitHub repo size](https://img.shields.io/github/repo-size/edemagbenyo/doctorize-front)
+![GitHub contributors](https://img.shields.io/github/contributors/edemagbenyo/doctorize-front)
+![GitHub stars](https://img.shields.io/github/stars/edemagbenyo/doctorize-front?style=social)
+![GitHub forks](https://img.shields.io/github/forks/edemagbenyo/doctorize-front?style=social)
+![Twitter Follow](https://img.shields.io/twitter/follow/edemagbenyo?style=social)
 
-In the project directory, you can run:
+Full-stack doctors and specialists appointment platform. This is the front-end repo of the application. It has been built using React and makes use of Redux for state management.
+
+Live version is available [here](https://doctorize.herokuapp.com/) .
+
+To report a bug or request a feature use this [link](https://github.com/edemagbenyo/doctorize-api/issues)
+
+![Screenshot of the webpage](https://github.com/edemagbenyo/doctorize-front/blob/implement-frontend/screenshots/overview.png)
+
+
+
+## Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+<!--- These are just example requirements. Add, duplicate or remove as required --->
+* You have installed the latest version of `nodejs`
+* You have a `<Windows/Linux/Mac>` machine.
+
+
+
+## About the project
+Doctorize is platform for medical appointment with specialists and GP doctors. Patients from the comfort of their home make appointment with doctors to get medical and professional advices on health issues. It is a full stack mobile responsive application built with React for the frontend and a Ruby on Rails API backend.
+
+
+## Installing Doctorize
+
+To install Doctorize, follow these steps:
+
+1. Clone the project
+```
+git clone git@github.com:edemagbenyo/doctorize-front.git
+
+cd doctorize
+```
+## Available scripts
+
+### `yarn install`
+Install all the dependencies.
 
 ### `yarn start`
-
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
@@ -13,56 +53,36 @@ The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
 ### `yarn test`
-
 Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
-
+### `yarn run build`
 Builds the app for production to the `build` folder.<br />
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Contributing to Doctorize
+To contribute to the Doctorize, follow these steps:
 
-### `yarn eject`
+1. Fork this repository.
+2. Create a branch: `git checkout -b feature/awesome_branch`.
+3. Make your changes and commit them: `git commit -m 'awesome message'`
+4. Push to the original branch: `git push origin feature/awesome_branch`
+5. Create the pull request.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Alternatively see the GitHub documentation on [creating a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Contributors
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Thanks to the following people who have contributed to this project:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+* [@edemagbenyo](https://github.com/edemagbenyo) 📖
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Contact
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+If you want to contact me you can reach me at <edem.agbenyo@gmail.com>.
 
-### Code Splitting
+## License
+<!--- If you're not sure which open license to use see https://choosealicense.com/--->
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+This project uses the following license: [MIT](<link>).

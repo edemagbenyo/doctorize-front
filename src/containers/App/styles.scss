@@ -1,0 +1,74 @@
+@import "../../styles/variables";
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+  .main-container {
+    height: 100vh;
+    display: flex;
+    .main-navbar {
+      width: 20%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .links {
+        ul {
+          margin-left: 20px;
+          li {
+            border-top-left-radius: 25px;
+            border-bottom-left-radius: 25px;
+            a {
+              display: block;
+              padding: 10px;
+              color: #191923;
+              font-size: 1.2em;
+              font-weight: 600;
+            }
+          }
+          li.active {
+            background-color: rgb(243, 146, 55);
+            a {
+              color: rgb(251, 254, 249);
+            }
+          }
+        }
+      }
+
+      .logo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .socials {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        ul {
+          justify-content: center;
+          display: flex;
+          li {
+            width: 20%;
+            display: inline-block;
+            img {
+              width: 100%;
+            }
+          }
+        }
+        p {
+          text-align: center;
+          font-size: 10px;
+        }
+      }
+    }
+    .main-content {
+      width: 80%;
+    }
+  }
+  .flash {
+    background-color: $blue;
+    padding: 5px;
+    color: #ffffff;
+    display: block;
+  }

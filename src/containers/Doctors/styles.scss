@@ -1,0 +1,26 @@
+@import "../../styles/variables";
+
+  .doctors {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: $white;
+    li {
+      text-align: center;
+      width: 30%;
+      background-color: $red;
+      margin: 5px;
+      cursor: pointer;
+      a {
+        color: $white;
+      }
+    }
+  }
+  .info {
+    padding: 5px;
+    color: $white;
+    background-color: $blue;
+    width: 100%;
+    display: block;
+    text-align: center;
+  }

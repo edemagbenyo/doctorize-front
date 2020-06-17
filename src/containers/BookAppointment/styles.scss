@@ -1,0 +1,51 @@
+@import "../../styles/variables";
+
+// @media only screen and (min-width: 768px) and (max-width: 1024px) {
+.book-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 40px;
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    & > div {
+      display: flex;
+      flex-direction: column;
+      margin: 10px 0;
+      padding: 0 10px;
+
+      & > input,
+      & > div {
+        font-size: 1.2em;
+        padding: 10px;
+      }
+
+      & > textarea {
+        font-size: 1.8em;
+        padding: 10px;
+        border-radius: 0;
+      }
+      & > select {
+        margin: 0 10px;
+      }
+    }
+    button[type="submit"] {
+      border: none;
+      background-color: $blue;
+      color: $white;
+      padding: 15px;
+      font-size: 1em;
+      display: block;
+      cursor: pointer;
+      transition: all .3s ease-out;
+      border:2px solid $blue;
+    }
+    button[type="submit"]:hover{
+      background-color: $white;
+      color:$blue;
+    }
+  }
+}
+// }

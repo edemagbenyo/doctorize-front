@@ -1,0 +1,53 @@
+@import "../../styles/variables";
+
+// @media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .health-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    form {
+      button {
+        border: 2px solid $blue;
+        background-color: $blue;
+        color: $white;
+        padding: 5px;
+        font-size: 1em;
+        cursor: pointer;
+        transition: all .2s ease-out;
+      }
+      button[type="submit"]:hover{
+        background-color: $white;
+        color:$blue;
+      }
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      div {
+        width: 150%;
+        display: flex;
+        margin: 10px 0;
+        label {
+          width: 20%;
+          text-align: right;
+        }
+        input {
+          margin: 0 10px;
+          width: 100%;
+          font-size: 1.2em;
+          padding: 10px;
+        }
+
+        textarea {
+          margin: 0 10px;
+          width: 100%;
+          font-size: 1.2em;
+          padding: 10px;
+        }
+        select {
+          margin: 0 10px;
+          width: 100%;
+        }
+      }
+    }
+  }
+// }

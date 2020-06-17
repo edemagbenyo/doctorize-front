@@ -1,0 +1,31 @@
+.flash-message {
+  position: relative;
+  padding: 10px;
+  color: #ffffff;
+  display: block;
+  width: 80%;
+  margin:0 auto;
+  button{
+    margin: 0 !important;
+    padding: 0 !important;
+    background: none !important;
+    border: none !important;
+    position: absolute;
+    right: 5px;
+    top: 25% ;
+    font-size: 1em !important;
+    span.close {
+      color: #ffffff;
+      padding: 0;
+      margin: 0;
+      font-size: 1.5em;
+      background: none;
+    }
+  }
+}
+.success {
+  background: #82D173;
+}
+.error{
+  background-color: rgb(245, 69, 69);
+}

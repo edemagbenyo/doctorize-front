@@ -1,0 +1,45 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true,
+        "jest":true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "airbnb"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
+        "import/no-unresolved": "off",
+        "no-shadow": "off",
+        "arrow-parens": ["error", "as-needed"],
+        "import/no-extraneous-dependencies":"off",
+        "no-use-before-define": "off",
+        "no-param-reassign": "off",
+        "no-lonely-if": "off",
+        "no-unused-vars": "off",
+        "import/prefer-default-export":"off",
+        "no-nested-ternary":"off",
+        "jsx-a11y/label-has-associated-control":"off",
+        "camelcase":"off",
+        "jsx-a11y/label-has-for":"off",
+        "import/no-mutable-exports":"off",
+        "jsx-a11y/href-no-hash": "off",
+        "jsx-a11y/img-has-alt": "off",
+        "import/extensions" : "off",
+        "react/jsx-first-prop-new-line":"off",
+        "no-underscore-dangle":"off"
+
+    }
+}
