@@ -7,7 +7,7 @@
 ![GitHub forks](https://img.shields.io/github/forks/edemagbenyo/doctorize-front?style=social)
 ![Twitter Follow](https://img.shields.io/twitter/follow/edemagbenyo?style=social)
 
-Full-stack doctors and specialists appointment platform. This is the front-end repo of the application. It has been built using React and makes use of Redux for state management.
+Doctorize is a doctors and specialists appointment platform. This is the front-end repo of the application. It has been built using React and makes use of Redux for state management.
 
 Live version is available [here](https://doctorize.herokuapp.com/) .
 
@@ -22,12 +22,10 @@ To report a bug or request a feature use this [link](https://github.com/edemagbe
 Before you begin, ensure you have met the following requirements:
 <!--- These are just example requirements. Add, duplicate or remove as required --->
 * You have installed the latest version of `nodejs`
-* You have a `<Windows/Linux/Mac>` machine.
-
 
 
 ## About the project
-Doctorize is platform for medical appointment with specialists and GP doctors. Patients from the comfort of their home make appointment with doctors to get medical and professional advices on health issues. It is a full stack mobile responsive application built with React for the frontend and a Ruby on Rails API backend.
+Doctorize is platform for medical appointment with specialists and GP doctors. Patients from the comfort of their home make appointment with doctors to get medical and professional advices on health issues. It is a full stack mobile responsive application built with React for the frontend and a Ruby on Rails API at the backend.
 
 
 ## Installing Doctorize
@@ -72,7 +70,6 @@ To contribute to the Doctorize, follow these steps:
 Alternatively see the GitHub documentation on [creating a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
 ## Contributors
-
 Thanks to the following people who have contributed to this project:
 
 * [@edemagbenyo](https://github.com/edemagbenyo) 📖
@@ -80,7 +77,15 @@ Thanks to the following people who have contributed to this project:
 
 ## Contact
 
-If you want to contact me you can reach me at <edem.agbenyo@gmail.com>.
+* LinkedIn: [@edemagbenyo](https://www.linkedin.com/in/edemagbenyo/) 
+* Portfolio: [edemagbenyo.com](https://edemagbenyo.com) 
+* Email: [edem.agbenyo@gmail.com](mailto:edem.agbenyo@gmail.com)
+
+## Known issues or improvement
+1. Integrate a video call service, to enable both patients and doctors to communicate from this platform.
+2. Make appointments cancellable.
+3. Send a notification(SMS and Email) to both parties upon making appointment.
+
 
 ## License
 <!--- If you're not sure which open license to use see https://choosealicense.com/--->
