@@ -25,7 +25,7 @@ Before you begin, ensure you have met the following requirements:
 
 
 ## About the project
-Doctorize is platform for medical appointment with specialists and GP doctors. Patients from the comfort of their home make appointment with doctors to get medical and professional advices on health issues. It is a full stack mobile responsive application built with React for the frontend and a Ruby on Rails API at the backend.
+Doctorize is platform for medical appointment with specialists and GP doctors. Patients can make appointments from the comfort of their home with doctors to get medical and professional advice on health issues. It is a full stack mobile responsive application built with React for the frontend and a Ruby on Rails API at the backend.
 
 
 ## Installing Doctorize
@@ -69,19 +69,14 @@ To contribute to the Doctorize, follow these steps:
 
 Alternatively see the GitHub documentation on [creating a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
-## Contributors
-Thanks to the following people who have contributed to this project:
 
-* [@edemagbenyo](https://github.com/edemagbenyo) 📖
+## Author
 
-
-## Contact
-
-* LinkedIn: [@edemagbenyo](https://www.linkedin.com/in/edemagbenyo/) 
+* LinkedIn: [Edem Agbenyo](https://www.linkedin.com/in/edemagbenyo/) 
 * Portfolio: [edemagbenyo.com](https://edemagbenyo.com) 
 * Email: [edem.agbenyo@gmail.com](mailto:edem.agbenyo@gmail.com)
 
-## Known issues or improvement
+## Future features
 1. Integrate a video call service, to enable both patients and doctors to communicate from this platform.
 2. Make appointments cancellable.
 3. Send a notification(SMS and Email) to both parties upon making appointment.
