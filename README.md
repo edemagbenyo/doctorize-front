@@ -71,11 +71,10 @@ Alternatively see the GitHub documentation on [creating a pull request](https://
 
 
 ## Author
-
-* LinkedIn: [Edem Agbenyo](https://www.linkedin.com/in/edemagbenyo/) 
-* Portfolio: [edemagbenyo.com](https://edemagbenyo.com) 
-* Email: [edem.agbenyo@gmail.com](mailto:edem.agbenyo@gmail.com)
-
+- Github: [@edemagbenyo](https://github.com/edemagbenyo)
+- Twitter: [Edem Agbenyo](https://twitter.com/edemAgbenyo)
+- LinkedIn: [Edem Agbenyo](https://www.linkedin.com/in/edemagbenyo/)
+- Email : [edem.agbenyo@gmail.com](mailto:edem.agbenyo@gmail.com)
 ## Future features
 1. Integrate a video call service, to enable both patients and doctors to communicate from this platform.
 2. Make appointments cancellable.
